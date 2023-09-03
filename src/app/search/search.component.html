@@ -1,0 +1,24 @@
+<div class="card flex flex-wrap justify-content-center gap-3">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input type="text" pInputText [(ngModel)]="value" (keyup.enter)="onSearch()" placeholder="Search" />
+    </span>
+  
+    <!-- <div style="width: 400px;">
+      <p-multiSelect [options]="ingredients" [(ngModel)]="selectedIngredients" defaultLabel="Add filter" optionLabel="name" [style]="{ 'width': '90%' }" [panelStyle]="{ 'width': '90%' }">
+      </p-multiSelect>
+    </div> -->
+  
+    
+  </div>
+  <div *ngIf="recipes.length > 0">
+    <h2>Recipes:</h2>
+    <ul>
+      <li *ngFor="let recipe of recipes">
+        <h3>{{ recipe.recipeName }}</h3>
+        <p>Ingredients: {{ recipe.ingredients }}</p>
+        <p>Steps: {{ recipe.steps }}</p>
+      </li>
+    </ul>
+  </div>
+  
