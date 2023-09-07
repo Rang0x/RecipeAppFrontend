@@ -1,0 +1,29 @@
+<div class="card p-fluid m-auto" [style]="{width: '50%'}">
+    <h5>Add Recipe</h5>
+    <div class="field">
+        <label>Name</label>
+        <input pInputText [(ngModel)]="recipe.recipeName" id="" placeholder="Enter Recipe name" type="text" />
+    </div>
+    <div class="field">
+        <label>Ingredients</label>
+        <input pInputText id="" [(ngModel)]="recipe.ingredients" placeholder="Enter Ingredients" type="text" />
+    </div>
+    <div class="field">
+        <label>Steps</label>
+        <input pInputText id="" [(ngModel)]="recipe.steps" placeholder="Enter Steps" type="text" />
+    </div>
+    <div class="field">
+        <label>Upload Image</label>
+        <input pInputText id="" [(ngModel)]="recipe.image" placeholder="Enter Steps" type="file" />
+    </div>
+    <div class="field">
+        <label>Dietary Restrictions</label>
+        <input pInputText id="" [(ngModel)]="recipe.dietaryRestriction" placeholder="Enter Steps" type="text" />
+    </div>
+    <div class="field">
+        <button pButton (click)="getForm()">Add</button>
+    </div>
+    <h2>{{recipe.recipeName}}</h2>
+    <h2>{{recipe.ingredients}}</h2>
+    <h2>{{recipe.steps}}</h2>
+</div>

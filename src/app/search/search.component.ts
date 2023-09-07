@@ -34,6 +34,6 @@ export class SearchComponent implements OnInit{
   constructor(private searchService: TestServiceService) { }
 
   ngOnInit() {
-   
+    
   }
 }

@@ -1,0 +1,31 @@
+<div class="card card-w-title">
+    <p-menubar>
+        <ng-template pTemplate="start" >
+            <div class="align-self-center flex justify-content-between">
+                <img src="assets/img/logo.png" alt="">
+            </div>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <div class="flex align-content-center ">
+                <button pButton pRipple type="button" label="All Recipes" class="m-2"></button>
+                <button pButton pRipple type="button" label="Add Recipe" class="p-button-secondary m-2"></button>
+                <button pButton pRipple type="button" label="Edit Recipe" class="p-button-danger m-2"></button>
+            </div>
+        </ng-template>
+    </p-menubar>
+</div>
+<app-search></app-search>
+<div class="grid grid-nogutter surface-section text-800">
+    <div class="col-12 md:col-6 p-6 text-center md:text-left flex align-items-center ">
+        <section>
+            <span class="block text-6xl font-bold ">Discover the Recipes</span>
+            <div class="text-6xl text-primary font-bold mb-3">YOU DESERVE</div>
+            <p class="mt-0 mb-4 text-700 line-height-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            
+            <button pButton pRipple label="Discover" type="button" class="mr-3 p-button-raised"></button>
+        </section>
+    </div>
+    <div class="col-12 md:col-6 overflow-hidden">
+        <img src="assets/img/hero-img.png" alt="Image" class="md:ml-auto p-6 block md:h-full" style="width: 75%;">
+    </div>
+</div>
