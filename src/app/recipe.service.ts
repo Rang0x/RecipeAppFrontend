@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TestServiceService {
+export class RecipeService {
 
   private apiUrl = 'https://localhost:7288/Recipe'; 
 
@@ -12,5 +12,8 @@ export class TestServiceService {
 
   searchByRecipeName(recipeName : string) : Observable<any> {
     return this.http.get(`${this.apiUrl}/GetRecipesByName/${recipeName}`);
+  }
+  getAllRecipes():Observable<any>{
+    return this.http.get(`${this.apiUrl}/GetAllRecipes`)
   }
 }

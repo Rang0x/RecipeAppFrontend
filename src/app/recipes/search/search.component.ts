@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TestServiceService } from '../test-service.service';
+import { RecipeService } from '../../recipe.service';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit{
     );
   }
 
-  constructor(private searchService: TestServiceService) { }
+  constructor(private searchService: RecipeService) { }
 
   ngOnInit() {
     
