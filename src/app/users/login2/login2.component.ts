@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-login2',
+  templateUrl: './login2.component.html',
+  styleUrls: ['./login2.component.scss']
 })
-export class LoginComponent {
+export class Login2Component {
   @Input() visible: boolean = false;
   loginForm = new FormGroup({
     userEmail: new FormControl(''),

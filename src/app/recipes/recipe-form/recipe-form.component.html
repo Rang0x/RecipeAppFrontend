@@ -21,9 +21,6 @@
         <input pInputText id="" [(ngModel)]="recipe.dietaryRestriction" placeholder="Enter Steps" type="text" />
     </div>
     <div class="field">
-        <button pButton (click)="getForm()">Add</button>
+        <button pButton (click)="postRecipe()">Add</button>
     </div>
-    <h2>{{recipe.recipeName}}</h2>
-    <h2>{{recipe.ingredients}}</h2>
-    <h2>{{recipe.steps}}</h2>
 </div>

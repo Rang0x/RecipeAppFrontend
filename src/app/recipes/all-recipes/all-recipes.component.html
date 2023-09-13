@@ -2,10 +2,13 @@
         <div class="card">
             <app-search></app-search>
             <div>
-                <div   class="flex p-5 flex-row flex-wrap justify-content-evenly align-items-center gap-4">
+                <div class="flex p-5 flex-row flex-wrap justify-content-evenly align-items-center gap-4">
                     <div *ngFor="let recipe of recipes"  class="bg-primary-100  text-center border-round">
                         <img [src]="recipe.image" class="w-20rem max-h-14rem p-1 border-round-2xl" alt="">
                         <h2>{{recipe.recipeName}}</h2>
+                        <p>{{recipe.steps}}</p>
+                        <p>{{recipe.ingredients}}</p>
+                        <p-button (click)="editForm(recipe.id)">Edit</p-button>
                     </div>
                 </div>
             </div>

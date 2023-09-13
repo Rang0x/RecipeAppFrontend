@@ -15,11 +15,17 @@ import {StyleClassModule} from 'primeng/styleclass';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RecipesModule } from './recipes/recipes.module';
 import { UsersModule } from './users/users.module';
+import { NavComponent } from './nav/nav.component';
+import { FooterComponent } from './footer/footer.component';
+import { PasswordModule } from 'primeng/password';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
+    NavComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +41,9 @@ import { UsersModule } from './users/users.module';
     MenubarModule,
     StyleClassModule,
     RecipesModule,
-    UsersModule
+    UsersModule,
+    PasswordModule,
+    CheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

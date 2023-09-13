@@ -12,11 +12,17 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { MenubarModule } from 'primeng/menubar';
 import {StyleClassModule} from 'primeng/styleclass';
+import { RecipeFormComponent } from './recipe-form/recipe-form.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 
 
 
 @NgModule({
-  declarations: [RecipePageComponent, AllRecipesComponent, SearchComponent],
+  declarations: [
+    RecipePageComponent,
+    AllRecipesComponent, 
+    SearchComponent, 
+    RecipeFormComponent, RecipeEditComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -34,7 +40,9 @@ import {StyleClassModule} from 'primeng/styleclass';
   exports: [
     RecipePageComponent,
     AllRecipesComponent,
-    SearchComponent
+    SearchComponent,
+    RecipeFormComponent,
+    RecipeEditComponent
   ]
 })
 export class RecipesModule { }
