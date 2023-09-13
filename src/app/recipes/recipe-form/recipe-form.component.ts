@@ -1,5 +1,7 @@
 import { Component , Input } from '@angular/core';
 import { Recipe } from '../../recipe';
+import { RecipeService } from 'src/app/recipe.service';
+
 
 @Component({
   selector: 'app-recipe-form',
@@ -17,7 +19,11 @@ export class RecipeFormComponent {
     popularity: 0,
     rating: 0,
   };
-  getForm(){
+  postRecipe(){
+    this.recipeService.postRecipe(this.recipe).subscribe((data) => {
+      console.log(data)
+    });
     console.log(this.recipe);
   }
+  constructor(private recipeService: RecipeService){}
 }

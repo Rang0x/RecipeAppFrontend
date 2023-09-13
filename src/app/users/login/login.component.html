@@ -1,1 +1,31 @@
-<h1>Hello from Users Module</h1>
+<p-button (click)="showDialog()" styleClass="p-button p-button-primary" label="Login"></p-button>
+<p-dialog header="Login" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="card p-fluid">
+            <h5>Please enter your email and password : </h5>
+            <div class="field">
+                <input pInputText placeholder="Email" formControlName="userEmail" type="email" />
+            </div>
+            <div class="field">
+                <p-password placeholder="Password" formControlName="userPass">
+                    <ng-template pTemplate="header">
+                        <h6>Pick a password</h6>
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+                        <p class="mt-2">Suggestions</p>
+                        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                            <li>At least one lowercase</li>
+                            <li>At least one uppercase</li>
+                            <li>At least one numeric</li>
+                            <li>Minimum 8 characters</li>
+                        </ul>
+                    </ng-template>
+                </p-password>
+            </div>
+            <div class="d-flex gap-2">
+                <p-button styleClass="p-button p-button-primary" type="submit" >Login</p-button>
+                <p-button styleClass="p-button-outlined p-button-danger" type="button" (click)="cancel()">Cancel</p-button>
+            </div>
+        </div>
+    </form>
+</p-dialog>

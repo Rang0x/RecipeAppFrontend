@@ -14,7 +14,10 @@ export class AllRecipesComponent implements OnInit {
         this.recipes = data;
         console.log(this.recipes);
       });
-      
+    }
+    editForm(recipeId:any){
+      console.log(this.recipes);
+      console.log(recipeId);
     }
   constructor(private recipesService: RecipeService){}
 }

@@ -1,0 +1,28 @@
+<form [formGroup]="editForm" (ngSubmit)="editRecipe()">
+    <div class="card p-fluid m-auto" [style]="{width: '50%'}">
+        <h5>Edit Recipe</h5>
+        <div class="field">
+            <label>Name</label>
+            <input pInputText formControlName="recipeName"  id="" placeholder="Lol" type="text" />
+        </div>
+        <div class="field">
+            <label>Ingredients</label>
+            <input pInputText formControlName="ingredients" id=""  placeholder="Enter Ingredients" type="text" />
+        </div>
+        <div class="field">
+            <label>Steps</label>
+            <input pInputText formControlName="steps" id="" placeholder="Enter Steps" type="text" />
+        </div>
+        <div class="field">
+            <label>Upload Image</label>
+            <input pInputText id="" formControlName="image" placeholder="Enter Steps" type="file" />
+        </div>
+        <div class="field">
+            <label>Dietary Restrictions</label>
+            <input pInputText id="" formControlName="dietaryRestriction"  placeholder="Enter Steps" type="text" />
+        </div>
+        <div class="field">
+            <button pButton type="submit">Edit</button>
+        </div>
+    </div>
+</form>

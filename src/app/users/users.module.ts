@@ -11,7 +11,10 @@ import { MenubarModule } from 'primeng/menubar';
 import {StyleClassModule} from 'primeng/styleclass';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { RecipeFormComponent } from './recipe-form/recipe-form.component';
+import { PasswordModule } from 'primeng/password';
+import { DialogModule } from 'primeng/dialog';
+import { Login2Component } from './login2/login2.component';
+import { CheckboxModule } from 'primeng/checkbox';
 
 
 
@@ -19,7 +22,7 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    RecipeFormComponent
+    Login2Component,
   ],
   imports: [
     CommonModule,
@@ -34,11 +37,14 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
     DropdownModule,
     MenubarModule,
     StyleClassModule,
+    PasswordModule,
+    DialogModule,
+    CheckboxModule
   ],
   exports: [
     LoginComponent,
     RegisterComponent,
-    RecipeFormComponent
+    Login2Component
   ]
 })
 export class UsersModule { }
