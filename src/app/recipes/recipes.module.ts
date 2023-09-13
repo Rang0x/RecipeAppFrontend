@@ -1,30 +1,26 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RecipePageComponent } from './recipe-page/recipe-page.component';
+import { AllRecipesComponent } from './all-recipes/all-recipes.component';
+import { SearchComponent } from './search/search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AppLayoutModule } from './layout/app.layout.module';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { MenubarModule } from 'primeng/menubar';
 import {StyleClassModule} from 'primeng/styleclass';
 
-import { HomepageComponent } from './homepage/homepage.component';
-import { RecipesModule } from './recipes/recipes.module';
-import { UsersModule } from './users/users.module';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomepageComponent,
-  ],
+  declarations: [RecipePageComponent, AllRecipesComponent, SearchComponent],
   imports: [
+    CommonModule,
+    FormsModule,
     BrowserModule,
-    AppRoutingModule,
-    AppLayoutModule,
     ButtonModule,
     InputTextModule,
     FormsModule,
@@ -34,10 +30,11 @@ import { UsersModule } from './users/users.module';
     DropdownModule,
     MenubarModule,
     StyleClassModule,
-    RecipesModule,
-    UsersModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports: [
+    RecipePageComponent,
+    AllRecipesComponent,
+    SearchComponent
+  ]
 })
-export class AppModule { }
+export class RecipesModule { }
