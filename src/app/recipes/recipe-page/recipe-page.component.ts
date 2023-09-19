@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Recipe } from '../../recipe';
 import { RecipeService } from '../../recipe.service';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-page',
@@ -9,30 +9,23 @@ import { RecipeService } from '../../recipe.service';
   styleUrls: ['./recipe-page.component.scss']
 })
 export class RecipePageComponent {
-  recipes: Recipe[] = [
-    {
-      recipeName: 'first',
-      image: '../assets/img/a.jpg',
-      ingredients: ['Salt', 'Bacon', 'Broccoli', 'Garlic'],
-      steps: ['Put apple slices through a food processor', 'Combine sugars and apples and cook for 4 hours',
-            'Put the cooked apples back through the food processor until smooth', 'Place back into an uncovered crock pot']
-    },
-    {
-      recipeName : 'second',
-      image : '../assets/img/b.jpg',
-      ingredients: ['Salt', 'Bacon', 'Broccoli', 'Garlic'],
-      steps: ['Put apple slices through a food processor', 'Combine sugars and apples and cook for 4 hours',
-            'Put the cooked apples back through the food processor until smooth', 'Place back into an uncovered crock pot']
-    },
-    {
-      recipeName : 'third',
-      image : '../assets/img/c.jpg',
-      ingredients: ['Salt', 'Bacon', 'Broccoli', 'Garlic'],
-      steps: ['Put apple slices through a food processor', 'Combine sugars and apples and cook for 4 hours',
-            'Put the cooked apples back through the food processor until smooth', 'Place back into an uncovered crock pot']
-    }
-  ]
-  constructor(){
+  recipe!: Recipe;
+  constructor(private route: ActivatedRoute,private service: RecipeService){}
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const recipeId = params['id']; 
+      this.service.getRecipeById(recipeId).subscribe(
+        (recipe) => {
+          this.recipe = recipe;
+          console.log('Recipes:', this.recipe);
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    });
+  }
+  getIngredientsArray(): void{
     
   }
 }

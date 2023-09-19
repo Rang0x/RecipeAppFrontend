@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RecipePageComponent } from './recipe-page/recipe-page.component';
 import { AllRecipesComponent } from './all-recipes/all-recipes.component';
 import { SearchComponent } from './search/search.component';
+import { BrowseComponent } from './browse/browse.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
@@ -14,16 +15,21 @@ import { MenubarModule } from 'primeng/menubar';
 import {StyleClassModule} from 'primeng/styleclass';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
-
-
+import { CardModule } from 'primeng/card';
+import { RatingModule } from 'primeng/rating';
+import { PaginatorModule } from 'primeng/paginator';
+import { SplitPipe } from '../pipes/split.pipe';
 
 @NgModule({
   declarations: [
     RecipePageComponent,
     AllRecipesComponent, 
     SearchComponent, 
+    BrowseComponent,
+    SplitPipe,
     RecipeFormComponent, RecipeEditComponent],
   imports: [
+    CardModule,
     CommonModule,
     FormsModule,
     BrowserModule,
@@ -36,13 +42,17 @@ import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
     DropdownModule,
     MenubarModule,
     StyleClassModule,
+    RatingModule,
+    PaginatorModule,
   ],
   exports: [
     RecipePageComponent,
     AllRecipesComponent,
     SearchComponent,
     RecipeFormComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    BrowseComponent,
+    SplitPipe,
   ]
 })
 export class RecipesModule { }

@@ -4,10 +4,12 @@
 @import "primeng/resources/primeng.css";
 @import "assets/layout/styles/layout/layout.scss";
 @import "primeflex/primeflex.css";
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
 
 body {
     background: rgb(255, 255, 255) !important;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .font { 

@@ -1,31 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../recipe.service';
 
-import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription, throwError } from 'rxjs';
-
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: 'app-browse',
+  templateUrl: './browse.component.html',
+  styleUrls: ['./browse.component.scss']
 })
-export class SearchComponent implements OnInit{
+export class BrowseComponent implements OnInit{
   value:string ='';
   recipes :any[] = []; 
   rows = 6;
   currentPage = 1;
-  
-  constructor(private searchService: RecipeService,private route: ActivatedRoute) { }
+  constructor(private browseService: RecipeService) { }
   
   ngOnInit() {
-    this.route.queryParams.subscribe((params: Params) => {
-      this.value = params['query'];
-      this.onSearch();
-    });
-  }
-
-  onSearch() {
-    this.searchService.searchByRecipeName(this.value).subscribe(
+    this.browseService.getAllRecipes().subscribe(
       (recipes) => {
         this.recipes = recipes;
         console.log('Recipes:', this.recipes);
@@ -41,6 +30,7 @@ export class SearchComponent implements OnInit{
     return this.recipes.slice(startIndex, endIndex);
   }
   onPageChange(event: any) {
+    
     this.currentPage = event.page + 1;
   }
 }

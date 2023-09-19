@@ -1,0 +1,25 @@
+<div class="search container ">
+    <div class="row justify-content-center" >
+      <div class=" col-md-4 col-sm-8 col-xs-16" *ngFor="let recipe of getRecipesForPage(currentPage); let i = index">
+        <div class="card mb-3 recipe-card">
+          
+        <a [routerLink]="['/recipes', recipe.id]">
+          <div class="card-img-container">
+            <img [src]="'https://localhost:7288/' + recipe.image" class="recipe-image" alt="recipe image">
+          </div>
+          
+          <div class="card-body" style="height: 100px;">
+            <h3 class="card-title">{{ recipe.recipeName }}</h3>
+            <p class="card-text">Ingredients: {{ recipe.ingredients }}</p>
+            <p class="card-rating"></p><p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
+          </div>
+        </a>
+      </div>
+      
+      
+    </div>
+    <p-paginator (onPageChange)="onPageChange($event)"  [rows]="rows" [totalRecords]="recipes.length"></p-paginator>
+      
+      
+    
+  </div>
