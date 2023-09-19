@@ -1,27 +1,45 @@
-<div class="container">
-    <nav class="navbar navbar-expand-lg bg-white">
-        <div class="container-fluid">
-            <img class="max-w-10rem" src="assets/img/logo.png" alt="">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<div class="header fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="logo navbar-brand" routerLink="/" routerLinkActive="active"[routerLinkActiveOptions]="{exact:true}">
+                <span class="mealify-text">Mealify</span><span class="dot">.</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav m-auto mb-2 mb-lg-0 ">
-                    <li class="nav-item">
-                        <a class="nav-link active fs-4" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  fs-4" aria-current="page" href="#">Recipes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-4" href="#">Link</a>
-                    </li>
-                </ul>
-                <div class="d-flex gap-2" role="search">
-                    <app-register *ngIf="false"></app-register>
-                    <app-login *ngIf="false"></app-login>
+           
+                <div class="options navbar-nav">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/Browse" routerLinkActive="active" >Recipes</a>
+                        </li>
+                    </div>
+                
                 </div>
-            </div>
-        </div>
+                <div class="search-box">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
+                        <li class="search navbar-nav">
+                            <span class="p-input-icon-left">
+                                <i class="pi pi-search"></i>
+                                <input type="text" pInputText [(ngModel)]="searchValue"  placeholder="Search" (keyup.enter)="searchRecipe()"
+                                aria-label="Search">
+                            </span>
+                        </li>
+                    </div>
+                </div>
+                    
+                    
+                <div class="end navbar-nav">
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
+                        <li class="login nav-item" (click)="openLoginDialog()">
+                            <a class="nav-link" routerLink="/Login">Login</a>
+                        </li>
+                        <li class="register nav-item">
+                            <a class=" nav-link" routerLink="/Register" style="color: white;">Sign Up</a>
+                        </li>
+                    </div>
+                </div>
+                
+            <!-- </div> -->
+        
     </nav>
 </div>

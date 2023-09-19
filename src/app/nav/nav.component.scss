@@ -1,3 +1,92 @@
 .active {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid rgb(238, 80, 80);
+}
+.header{ 
+  justify-content: space-around;
+  
+  height: 70px;
+    nav {
+      background-color: white;
+  
+      .navbar-brand {
+        font-size: 2em;
+        font-weight: bold;
+      }
+      .logo {
+        flex-grow: 2;
+        text-align: center;
+        // height: 100%;
+        // -webkit-box-sizing: border-box;
+        // box-sizing: border-box;
+        // display: inline-block;
+        // vertical-align: top;
+        border-right: 1px solid #e7e7e9;
+      }
+      .options {
+        font-size: 19px;
+        flex-grow: 4;
+      .nav-link {
+        &.active {
+          color: #e8073f;
+          }
+        }
+      }
+      .mealify-text {
+        color: black; /* Set the color of the text part (Mealify) */
+      }
+      
+      .dot {
+        color: red; /* Set the color of the dot */
+      }
+  
+      
+  
+    .search-box {
+      flex-grow: 4;
+      float:right;
+      input {
+        width: 100%;
+      }
+      input {
+        border-radius: 10px;
+      }
+      
+    }
+    .p-input-icon-left input {
+      
+      width: 350px; 
+      border-radius: 15px;
+    }
+    .pull-right {
+      float: right !important;
+  }
+    .end {
+      flex-grow: 1;
+      //float: left !important;
+      font-size: 19px;
+      .login {
+        padding-left: 10px;
+        padding-right: 10px;
+        p {
+          margin: 0;
+        }
+        
+      }
+      .login:hover{
+        
+        border-bottom: 2px solid #ea3e4c;
+      }
+      .register {
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: #ea3e4c;
+        border-radius: 10px;
+        margin: 0;
+      }
+      .register:hover{
+        background-color: #d33f4b;
+      }
+
+    }
+}
 }

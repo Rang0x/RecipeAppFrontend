@@ -1,17 +1,53 @@
-<div class=" flex flex-wrap justify-content-center gap-3 p-0">
-    <span class="p-input-icon-left  m-auto py-2">
-      <i class="pi pi-search"></i>
-      <input type="text" pInputText [(ngModel)]="value" (keyup.enter)="onSearch()" placeholder="Search" />
-    </span>
+<!-- <div class="flex flex-wrap justify-content-center gap-3 p-0">
+  <span class="p-input-icon-left m-auto py-2">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText [(ngModel)]="value" (keyup.enter)="onSearch()" placeholder="Search" />
+  </span>
+  d-flex flex-column align-items-center justify-content-center vh-90
+</div> -->
+
+<div class="search container ">
+  <div class="title">
+    <h2>{{recipes.length}} Recipes</h2>
   </div>
-  <div *ngIf="recipes.length > 0">
-    <h2>Recipes:</h2>
-    <ul>
-      <li *ngFor="let recipe of recipes">
-        <h3>{{ recipe.recipeName }}</h3>
-        <p>Ingredients: {{ recipe.ingredients }}</p>
-        <p>Steps: {{ recipe.steps }}</p>
-      </li>
-    </ul>
+  <div class="row justify-content-center" >
+    <div class=" col-md-4 col-sm-8 col-xs-16" *ngFor="let recipe of getRecipesForPage(currentPage); let i = index">
+      <div class="card mb-3 recipe-card">
+        <a [routerLink]="['/recipes', recipe.id]">
+          <div class="card-img-container">
+            <img [src]="'https://localhost:7288/' + recipe.image" class="card-img-top" alt="Recipe Image">
+          </div>
+          
+          <div class="card-body" style="height: 100px;">
+            
+            <h3 class="card-title">{{ recipe.recipeName }}</h3>
+            <p class="card-text">Ingredients: {{ recipe.ingredients }}</p>
+            <p class="card-text"></p><p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
+            
+          </div>
+        </a>
+        
+
+    </div>
+    
+    
   </div>
+  <p-paginator (onPageChange)="onPageChange($event)"  [rows]="rows" [totalRecords]="recipes.length"></p-paginator>
+    
+    
+  
+</div>
+
+  <!-- <div *ngIf="recipes.length > 0">
+    <h2>{{ recipes.length }} Recipes</h2>
+    <div class="col-4" *ngFor="let recipe of recipes; let i = index">
+      <div class="card mb-3" >
+      <p-card [header]="recipe.name" subheader="Card Subheader" [style]="{ width: '360px' }">
+        <ng-template pTemplate="header">
+          <img alt="Recipe Image" [src]="'https://localhost:7288/' + recipe.image" />
+        </ng-template>
+      </p-card>
+      </div>
+    </div>
+  </div> -->
   

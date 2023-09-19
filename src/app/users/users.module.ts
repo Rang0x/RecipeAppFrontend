@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PasswordModule } from 'primeng/password';
 import { DialogModule } from 'primeng/dialog';
-import { Login2Component } from './login2/login2.component';
+//import { Login2Component } from './login2/login2.component';
 import { CheckboxModule } from 'primeng/checkbox';
 
 
@@ -22,7 +22,7 @@ import { CheckboxModule } from 'primeng/checkbox';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    Login2Component,
+    //Login2Component,
   ],
   imports: [
     CommonModule,
@@ -44,7 +44,7 @@ import { CheckboxModule } from 'primeng/checkbox';
   exports: [
     LoginComponent,
     RegisterComponent,
-    Login2Component
+    //Login2Component
   ]
 })
 export class UsersModule { }
