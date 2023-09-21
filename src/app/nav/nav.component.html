@@ -29,21 +29,21 @@
                     
                 <div class="end navbar-nav">
                     <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
-                        <div *ngIf="isLogged">
+                        <div *ngIf="!isLogged">
                             <p-toast></p-toast>
                             <p-menu #menu [model]="items" [popup]="true"></p-menu>
                             <button pButton type="button" (click)="menu.toggle($event)" icon="pi pi-bars" label="" class="custom-button"></button>
                         </div>
 
-                        <li *ngIf="!isLogged" class="login nav-item">
+                        <li *ngIf="isLogged" class="login nav-item">
                             <a class="nav-link" routerLink="/Login">Login</a>
                         </li>
-                        <li *ngIf="!isLogged" class="register nav-item">
+                        <li *ngIf="isLogged" class="register nav-item">
                             <a class=" nav-link" routerLink="/Register" style="color: white;">Sign Up</a>
                         </li>
-                        <li *ngIf="isLogged" class="register nav-item">
-                            <a class=" nav-link" (click)="logOut()" routerLink="/Register" style="color: white;">Signout</a>
-                        </li> 
+                        <!-- <li *ngIf="isLogged" class="logout nav-item">
+                            <a class=" nav-link" (click)="logOut()" routerLink="/Register" style="color: white;">Sign Out</a>
+                        </li>  -->
                     </div>
                 </div>
     </nav>

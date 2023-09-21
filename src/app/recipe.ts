@@ -1,10 +1,11 @@
 export interface Recipe {
         id?: number;
         recipeName: string;
-        ingredients?: string[];
-        steps?: string[];
+        ingredients?: string;
+        steps?: string;
         image?: string;
-        dietaryRestriction?: string;
+        dietaryRestrictions?: string;
+        createdOn?: Date;
         popularity?: number;
         rating?: number;
 }

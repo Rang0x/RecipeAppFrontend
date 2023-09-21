@@ -15,7 +15,7 @@ export class RecipeEditComponent implements OnInit{
       ingredients : new FormControl(''),
       steps : new FormControl(''),
       image : new FormControl(''),
-      dietaryRestriction : new FormControl('')
+      dietaryRestrictions : new FormControl('')
     })
   editRecipe(){
     console.log(this.editForm.value)
@@ -28,7 +28,7 @@ export class RecipeEditComponent implements OnInit{
         ingredients : new FormControl(`${this.recipeToEdit.ingredients}`),
         steps : new FormControl(`${this.recipeToEdit.steps}`),
         image : new FormControl(`${this.recipeToEdit.image}`),
-        dietaryRestriction : new FormControl(`${this.recipeToEdit.dietaryRestriction}`)
+        dietaryRestrictions : new FormControl(`${this.recipeToEdit.dietaryRestrictions}`)
       })
     });
   }
