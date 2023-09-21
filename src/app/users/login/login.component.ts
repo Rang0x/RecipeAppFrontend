@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +11,26 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class LoginComponent {
   @Input() visible: boolean = false;
   loginForm = new FormGroup({
-    userEmail: new FormControl(''),
-    userPass: new FormControl('')
+    email: new FormControl('', Validators.email),
+    password: new FormControl('', Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,12}$/))
   })
-  onSubmit(){
+  isLoading:boolean = false;
+  constructor(private _AuthService: AuthService, private _router:Router){}
+  onSubmit(loginForm:object){
     console.log(this.loginForm.value);
+    this.isLoading = true;
+    this._AuthService.login(this.loginForm.value).subscribe(
+      {
+        next: (res) => {
+          if(res.message === 'success'){
+            localStorage.setItem('userToken', res.token);
+            this._AuthService.decodeUserToken();
+            this.isLoading = false;
+            this._router.navigate(['/Browse']);
+          }
+        }
+      }
+    )
   }
   showDialog() {
     this.visible = true;
