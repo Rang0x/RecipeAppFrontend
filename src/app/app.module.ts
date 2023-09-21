@@ -33,6 +33,8 @@ import { MenuModule } from 'primeng/menu';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { authGuard } from './auth.guard';
+import { ToastModule } from "primeng/toast";
+import { MessageService } from 'primeng/api';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -75,10 +77,11 @@ const appRoutes: Routes = [
     UsersModule,
     PasswordModule,
     CheckboxModule,
+    ToastModule,
     RouterModule.forRoot(appRoutes),
     MenuModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
