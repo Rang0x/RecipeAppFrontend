@@ -26,8 +26,12 @@ import { AboutComponent } from './about/about.component';
 import { BrowseComponent } from './recipes/browse/browse.component';
 import { RecipePageComponent } from './recipes/recipe-page/recipe-page.component';
 //import { SplitPipe } from 'src/app/pipes/split.pipe';
-//import { LoginComponent } from './users/login/login.component';
-// import { RegisterComponent } from './users/register/register.component';
+import { LoginComponent } from './users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MenuModule } from 'primeng/menu';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
@@ -35,9 +39,10 @@ const appRoutes: Routes = [
   {path:'About',component: AboutComponent},
   {path:'Browse',component: BrowseComponent},
   {path: 'recipes/:id', component: RecipePageComponent },
-  // {path:'Login',component: LoginComponent},
-  // {path:'Register',component: RegisterComponent},
-  
+  {path:'Login',component: LoginComponent},
+  {path:'Register',component: RegisterComponent},
+  {path:'Add-recipe', component: RecipeFormComponent},
+  {path:'Edit-recipe', component: RecipeEditComponent}
 ];
 @NgModule({
   declarations: [
@@ -46,6 +51,7 @@ const appRoutes: Routes = [
     NavComponent,
     FooterComponent,
     AboutComponent,
+    SidebarComponent,
     //SplitPipe,
     //LoginComponent,
     // RegisterComponent
@@ -68,8 +74,8 @@ const appRoutes: Routes = [
     UsersModule,
     PasswordModule,
     CheckboxModule,
-    RouterModule.forRoot(appRoutes)
-    
+    RouterModule.forRoot(appRoutes),
+    MenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

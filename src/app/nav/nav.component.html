@@ -6,7 +6,6 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-           
                 <div class="options navbar-nav">
                     <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
                         <li class="nav-item">
@@ -17,7 +16,7 @@
                 </div>
                 <div class="search-box">
                     <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
-                        <li class="search navbar-nav">
+                        <li *ngIf="isLogged"  class="search navbar-nav">
                             <span class="p-input-icon-left">
                                 <i class="pi pi-search"></i>
                                 <input type="text" pInputText [(ngModel)]="searchValue"  placeholder="Search" (keyup.enter)="searchRecipe()"
@@ -30,16 +29,16 @@
                     
                 <div class="end navbar-nav">
                     <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
-                        <li class="login nav-item" (click)="openLoginDialog()">
+                        <li *ngIf="!isLogged" class="login nav-item">
                             <a class="nav-link" routerLink="/Login">Login</a>
                         </li>
-                        <li class="register nav-item">
+                        <li *ngIf="!isLogged" class="register nav-item">
                             <a class=" nav-link" routerLink="/Register" style="color: white;">Sign Up</a>
+                        </li>
+                        <li *ngIf="isLogged" class="register nav-item">
+                            <a class=" nav-link" (click)="logOut()" routerLink="/Register" style="color: white;">Signout</a>
                         </li>
                     </div>
                 </div>
-                
-            <!-- </div> -->
-        
     </nav>
 </div>
