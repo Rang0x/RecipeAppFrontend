@@ -24,7 +24,7 @@
       }
       .options {
         font-size: 19px;
-        flex-grow: 4;
+        flex-grow: 3;
       .nav-link {
         &.active {
           color: #e8073f;
@@ -71,6 +71,14 @@
           margin: 0;
         }
         
+      }
+      .custom-button {
+        background-color: #f95663;
+        color: rgb(255, 255, 255); 
+        //font-size: 19px !important;
+        padding: 8px 5px; 
+        border-color: white;
+        border-radius: 20px;
       }
       .login:hover{
         

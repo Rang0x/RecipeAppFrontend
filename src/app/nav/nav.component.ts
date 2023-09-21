@@ -9,6 +9,30 @@ import { AuthService } from '../auth.service';
 export class NavComponent {
   isLogged: boolean = false;
   searchValue:string ='';
+  items: any[] = [
+    {
+      label: 'Create Recipe',
+      icon: 'pi pi-plus pink-icon',
+      style: 'color: pink;', 
+      command: () => {
+        console.log('Create Recipe clicked');
+      }
+    },
+    {
+      label: 'Favorites',
+      icon: 'pi pi-star pink-icon', 
+      command: () => {
+        console.log('Favorites clicked');
+      }
+    },
+    {
+      label: 'My Recipes',
+      icon: 'pi pi-book pink-icon', 
+      command: () => {
+        console.log('My Recipes clicked');
+      }
+    }
+  ];
   constructor(private router: Router, private _authService: AuthService) {
     _authService.userData.subscribe({
       next: () => {

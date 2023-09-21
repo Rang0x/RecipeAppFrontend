@@ -25,4 +25,7 @@ export class RecipeService {
   editRecipe(recipe:{}, recipeId: any){
     return this.http.put(`${this.apiUrl}/UpdateRecipe/${recipeId}`, recipe)
   }
+  sortByRating(): Observable<any>{
+    return this.http.get(`${this.apiUrl}/sortByRating`)
+  }
 }

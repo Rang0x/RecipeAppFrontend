@@ -19,6 +19,9 @@ import { CardModule } from 'primeng/card';
 import { RatingModule } from 'primeng/rating';
 import { PaginatorModule } from 'primeng/paginator';
 import { SplitPipe } from '../pipes/split.pipe';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { MenuModule } from 'primeng/menu';
+
 
 @NgModule({
   declarations: [
@@ -44,6 +47,8 @@ import { SplitPipe } from '../pipes/split.pipe';
     StyleClassModule,
     RatingModule,
     PaginatorModule,
+    ProgressSpinnerModule,
+    MenuModule,
   ],
   exports: [
     RecipePageComponent,
