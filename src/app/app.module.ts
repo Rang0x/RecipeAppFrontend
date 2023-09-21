@@ -32,19 +32,20 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { MenuModule } from 'primeng/menu';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
+import { authGuard } from './auth.guard';
 import { ToastModule } from "primeng/toast";
 import { MessageService } from 'primeng/api';
 
 const appRoutes: Routes = [
   {path: '', component: HomepageComponent},
-  {path:'search',component: SearchComponent},
+  {path:'search', canActivate: [authGuard],component: SearchComponent},
   {path:'About',component: AboutComponent},
-  {path:'Browse',component: BrowseComponent},
-  {path: 'recipes/:id', component: RecipePageComponent },
+  {path:'Browse', canActivate: [authGuard],component: BrowseComponent},
+  {path: 'recipes/:id', canActivate: [authGuard], component: RecipePageComponent },
   {path:'Login',component: LoginComponent},
   {path:'Register',component: RegisterComponent},
-  {path:'Add-recipe', component: RecipeFormComponent},
-  {path:'Edit-recipe', component: RecipeEditComponent}
+  {path:'Add-recipe', canActivate: [authGuard], component: RecipeFormComponent},
+  {path:'Edit-recipe', canActivate: [authGuard], component: RecipeEditComponent}
 ];
 @NgModule({
   declarations: [

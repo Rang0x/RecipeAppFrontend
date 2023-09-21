@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private apiUrl = 'https://route-ecommerce.onrender.com/'; 
-  userData = new BehaviorSubject(null);
+  userData:BehaviorSubject<any> = new BehaviorSubject(null);
   constructor(private _httpClient: HttpClient, private _router:Router) { }
   decodeUserToken(){
     let encodedToken:string = JSON.stringify( localStorage.getItem('userToken'));
