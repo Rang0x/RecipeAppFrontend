@@ -1,10 +1,19 @@
 
 <app-nav></app-nav>
 <div class="my-8">
-    <router-outlet ></router-outlet>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 pe-0">
+                <app-sidebar></app-sidebar>
+            </div> 
+            <div class="col-md-10 pe-0">
+                <router-outlet></router-outlet>
+                <app-footer></app-footer>
+            </div>
+        </div>
+    </div>
+    
 </div>
-<app-footer></app-footer>
-
 
 
 
