@@ -37,19 +37,6 @@ import { ToastModule } from "primeng/toast";
 import { MessageService } from 'primeng/api';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-const appRoutes: Routes = [
-  {path: '', component: HomepageComponent},
-  {path:'search', canActivate: [authGuard],component: SearchComponent},
-  {path:'About',component: AboutComponent},
-  {path:'Browse', canActivate: [authGuard],component: BrowseComponent},
-  {path: 'recipes/:id', canActivate: [authGuard], component: RecipePageComponent },
-  {path:'Login',component: LoginComponent},
-  {path:'Register',component: RegisterComponent},
-  {path:'Add-recipe', canActivate: [authGuard], component: RecipeFormComponent},
-  {path:'Edit-recipe', canActivate: [authGuard], component: RecipeEditComponent},
-  {path: '**', component: NotFoundComponent}
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,12 +69,9 @@ const appRoutes: Routes = [
     PasswordModule,
     CheckboxModule,
     ToastModule,
-    sideBar
-    RouterModule.forRoot(appRoutes),
     MenuModule,
-    BadgeModule
-    MenuModule
-    master
+    BadgeModule,
+
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
