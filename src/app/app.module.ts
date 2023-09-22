@@ -52,6 +52,7 @@ const appRoutes: Routes = [
   {path:'Edit-recipe', canActivate: [authGuard], component: RecipeEditComponent},
   {path: '**', component: NotFoundComponent}
 ];
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -21,8 +21,10 @@ import { PaginatorModule } from 'primeng/paginator';
 import { SplitPipe } from '../pipes/split.pipe';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MenuModule } from 'primeng/menu';
+import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { MessagesModule } from 'primeng/messages';
 import { CarouselModule } from 'primeng/carousel';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { CarouselModule } from 'primeng/carousel';
     SearchComponent, 
     BrowseComponent,
     SplitPipe,
-    RecipeFormComponent, RecipeEditComponent],
+    RecipeFormComponent, RecipeEditComponent, MyRecipesComponent],
   imports: [
     CardModule,
     CommonModule,

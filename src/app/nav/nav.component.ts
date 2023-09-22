@@ -16,7 +16,7 @@ export class NavComponent {
       icon: 'pi pi-plus pink-icon',
       style: 'color: pink;', 
       command: () => {
-        console.log('Create Recipe clicked');
+        this.router.navigate(['/Add-recipe']);
       }
     },
     {
@@ -30,9 +30,18 @@ export class NavComponent {
       label: 'My Recipes',
       icon: 'pi pi-book pink-icon', 
       command: () => {
-        console.log('My Recipes clicked');
+        this.router.navigate(['/My-Recipes']);
+      }
+    },
+    {
+      label: 'Logout',
+      icon: 'pi pi-sign-out pink-icon',
+      command: () => {
+        this.isLogged=false;
+        console.log('Logout clicked');
       }
     }
+  
   ];
   constructor(private router: Router, private _authService: AuthService) {
     _authService.userData.subscribe({

@@ -13,12 +13,12 @@
         <input pInputText id="" [(ngModel)]="recipe.steps" placeholder="Enter Steps" type="text" />
     </div>
     <div class="field">
-        <label>Upload Image</label>
-        <input pInputText id="" [(ngModel)]="recipe.image" placeholder="Enter Steps" type="file" />
+        <label for="fileInput">Upload Image</label>
+        <input pInputText id="fileInput" type="file" (change)="onFileSelected($event)"/>
     </div>
     <div class="field">
         <label>Dietary Restrictions</label>
-        <input pInputText id="" [(ngModel)]="recipe.dietaryRestrictions" placeholder="Enter Steps" type="text" />
+        <input pInputText id="" [(ngModel)]="recipe.dietaryRestrictions" placeholder="Enter Dietary Restrictions" type="text" />
     </div>
     <div class="field">
         <button pButton (click)="postRecipe()">Add</button>
