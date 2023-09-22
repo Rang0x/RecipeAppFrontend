@@ -8,6 +8,7 @@ import { AuthService } from '../auth.service';
 })
 export class NavComponent {
   isLogged: boolean = false;
+  loggedUserName:string = '';
   searchValue:string ='';
   items: any[] = [
     {
@@ -38,6 +39,7 @@ export class NavComponent {
       next: () => {
         if(_authService.userData.getValue() !== null){
           this.isLogged = true;
+          this.loggedUserName = _authService.loggedUserName;
         }
         else{
           this.isLogged = false;

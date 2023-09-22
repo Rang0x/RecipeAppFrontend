@@ -15,19 +15,24 @@ export class SidebarComponent implements OnInit{
           label: 'Recipes',
           items: [
               {
-                label: 'My Recipes',
-                icon: 'pi pi-fw pi-book'
+                label: 'All Recipes',
+                icon: 'pi pi-fw pi-book',
+                routerLink: 'Browse'
               },
               {
-                  label: 'New',
+                label: 'My Recipes',
+                icon: 'pi pi-fw pi-th-large'
+              },
+              {
+                  label: 'Add Recipe',
                   icon: 'pi pi-fw pi-plus',
                   routerLink: 'Add-recipe'
               },
               {
-                  label: 'Edit',
-                  icon: 'pi pi-fw pi-user-edit',
-                  routerLink: 'Edit-recipe'
-              },
+                  label: 'My Favourites',
+                  icon: 'pi pi-fw pi-heart',
+                  routerLink: 'Add-recipe'
+              }
           ]
       }]
 

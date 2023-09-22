@@ -33,6 +33,7 @@ export class RecipeEditComponent implements OnInit{
     });
   }
   ngOnInit(): void {
+    localStorage.setItem("currentPage", "Edit-recipe");
     this.getRecipeById();
     }
   constructor(private recipeService: RecipeService){}
