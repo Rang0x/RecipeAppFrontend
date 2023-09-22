@@ -15,12 +15,6 @@
       .logo {
         flex-grow: 2;
         text-align: center;
-        // height: 100%;
-        // -webkit-box-sizing: border-box;
-        // box-sizing: border-box;
-        // display: inline-block;
-        // vertical-align: top;
-        border-right: 1px solid #e7e7e9;
       }
       .options {
         font-size: 19px;
@@ -39,7 +33,10 @@
         color: red; /* Set the color of the dot */
       }
   
-      
+      .recipes {
+        border-bottom: 1px solid red;
+        padding-bottom: 5px;
+      }
   
     .search-box {
       flex-grow: 4;

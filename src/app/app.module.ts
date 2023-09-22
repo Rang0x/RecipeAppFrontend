@@ -12,7 +12,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { MenubarModule } from 'primeng/menubar';
 import {StyleClassModule} from 'primeng/styleclass';
-
+import { BadgeModule } from 'primeng/badge';
 import { HomepageComponent } from './homepage/homepage.component';
 import { RecipesModule } from './recipes/recipes.module';
 import { UsersModule } from './users/users.module';
@@ -35,7 +35,20 @@ import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component
 import { authGuard } from './auth.guard';
 import { ToastModule } from "primeng/toast";
 import { MessageService } from 'primeng/api';
+import { NotFoundComponent } from './not-found/not-found.component';
 
+const appRoutes: Routes = [
+  {path: '', component: HomepageComponent},
+  {path:'search', canActivate: [authGuard],component: SearchComponent},
+  {path:'About',component: AboutComponent},
+  {path:'Browse', canActivate: [authGuard],component: BrowseComponent},
+  {path: 'recipes/:id', canActivate: [authGuard], component: RecipePageComponent },
+  {path:'Login',component: LoginComponent},
+  {path:'Register',component: RegisterComponent},
+  {path:'Add-recipe', canActivate: [authGuard], component: RecipeFormComponent},
+  {path:'Edit-recipe', canActivate: [authGuard], component: RecipeEditComponent},
+  {path: '**', component: NotFoundComponent}
+];
 
 @NgModule({
   declarations: [
@@ -45,6 +58,7 @@ import { MessageService } from 'primeng/api';
     FooterComponent,
     AboutComponent,
     SidebarComponent,
+    NotFoundComponent,
     //SplitPipe,
     //LoginComponent,
     // RegisterComponent
@@ -68,7 +82,12 @@ import { MessageService } from 'primeng/api';
     PasswordModule,
     CheckboxModule,
     ToastModule,
+    sideBar
+    RouterModule.forRoot(appRoutes),
+    MenuModule,
+    BadgeModule
     MenuModule
+    master
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

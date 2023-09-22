@@ -11,11 +11,21 @@ import { Router } from '@angular/router';
 export class AuthService {
   private apiUrl = 'https://route-ecommerce.onrender.com/'; 
   userData:BehaviorSubject<any> = new BehaviorSubject(null);
-  constructor(private _httpClient: HttpClient, private _router:Router) { }
+  loggedUserName:string = '';
+  constructor(private _httpClient: HttpClient, private _router:Router) {
+    if(localStorage.getItem("userToken") === null){
+      _router.navigate(["/Login"])
+    }
+    else{
+      this.decodeUserToken();
+      _router.navigate([localStorage.getItem("currentPage")])
+    }
+  }
   decodeUserToken(){
     let encodedToken:string = JSON.stringify( localStorage.getItem('userToken'));
     let decodedToken:any = jwtDecode(encodedToken);
-    console.log(decodedToken);
+    console.log(decodedToken.name);
+    this.loggedUserName = decodedToken.name;
     this.userData.next(decodedToken);
   }
   register(registerData:object):Observable<any>{

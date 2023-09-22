@@ -2,15 +2,50 @@
     margin-top: 80px;
 }
 
+.rPage {
+  background-image: url('../../../assets/img/bg.jpg');
+  background: linear-gradient(0deg, rgba(219, 219, 219, 0.859), rgba(240, 240, 240, 0.766)), url('../../../assets/img/bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
+}
+  
+.scrolldown {
+	border: 2px solid #790c0c;
+	border-radius: 30px;
+	height: 46px;
+	margin: 0 auto 8px;
+	text-align: center;
+	width: 30px;
+}
 
+.scrolldown-p1,
+.scrolldown-p2 {
+	width: 2px;
+	animation-duration: 1.5s;
+	animation-name: scrolldown;
+	animation-iteration-count: infinite;
+	fill: #000000;
+}
   
-  .card-text {
-   
-  }
-  
-  .text-3xl {
-   
-  }
-  
+.scrolldown-p2 {
+	animation-delay: .75s;
+}
+
+@keyframes scrolldown {
+	0% {
+		opacity: 0;
+		transform: translate(0, -8px);
+	}
+	50% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
+	100% {
+		opacity: 0;
+		transform: translate(0, 8px);
+	}
+}
 
   

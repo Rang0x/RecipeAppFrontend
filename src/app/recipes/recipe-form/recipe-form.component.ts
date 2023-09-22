@@ -1,4 +1,4 @@
-import { Component , Input } from '@angular/core';
+import { Component , Input, OnInit } from '@angular/core';
 import { Recipe } from '../../recipe';
 import { RecipeService } from 'src/app/recipe.service';
 
@@ -8,7 +8,7 @@ import { RecipeService } from 'src/app/recipe.service';
   templateUrl: './recipe-form.component.html',
   styleUrls: ['./recipe-form.component.scss']
 })
-export class RecipeFormComponent {
+export class RecipeFormComponent implements OnInit{
   @Input() recipe: Recipe = {
       recipeName: "",
       ingredients: "",
@@ -44,4 +44,7 @@ export class RecipeFormComponent {
     console.log(this.recipe);
   }
   constructor(private recipeService: RecipeService){}
+  ngOnInit(): void {
+    localStorage.setItem("currentPage", "Add-recipe");
+  }
 }
