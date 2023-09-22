@@ -4,7 +4,8 @@ export interface Recipe {
         ingredients?: string[];
         steps?: string[];
         image?: string;
-        dietaryRestriction?: string;
+        dietaryRestrictions?: string;
         popularity?: number;
         rating?: number;
+        categories?: string;
 }

@@ -20,7 +20,7 @@ export class RecipeService {
     return this.http.get(`${this.apiUrl}/GetAllRecipes`);
   }
   postRecipe(recipe:{}): Observable<any>{
-    return this.http.post(`${this.apiUrl}/add`, recipe);
+    return this.http.post(`${this.apiUrl}/AddRecipe`, recipe);
   }
   editRecipe(recipe:{}, recipeId: any){
     return this.http.put(`${this.apiUrl}/UpdateRecipe/${recipeId}`, recipe)

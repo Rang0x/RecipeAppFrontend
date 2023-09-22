@@ -36,9 +36,12 @@ import { authGuard } from './auth.guard';
 import { ToastModule } from "primeng/toast";
 import { MessageService } from 'primeng/api';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MessagesModule } from 'primeng/messages';
+import { CarouselModule } from 'primeng/carousel';
 
 const appRoutes: Routes = [
-  {path: '', component: HomepageComponent},
+  {path: '', redirectTo: 'Home', pathMatch:'full'},
+  {path: 'Home', component: HomepageComponent},
   {path:'search', canActivate: [authGuard],component: SearchComponent},
   {path:'About',component: AboutComponent},
   {path:'Browse', canActivate: [authGuard],component: BrowseComponent},
@@ -57,7 +60,7 @@ const appRoutes: Routes = [
     FooterComponent,
     AboutComponent,
     SidebarComponent,
-    NotFoundComponent,
+    NotFoundComponent
     //SplitPipe,
     //LoginComponent,
     // RegisterComponent
@@ -83,7 +86,9 @@ const appRoutes: Routes = [
     ToastModule,
     RouterModule.forRoot(appRoutes),
     MenuModule,
-    BadgeModule
+    BadgeModule,
+    MessagesModule,
+    CarouselModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

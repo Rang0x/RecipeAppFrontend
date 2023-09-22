@@ -21,7 +21,8 @@ import { PaginatorModule } from 'primeng/paginator';
 import { SplitPipe } from '../pipes/split.pipe';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { MenuModule } from 'primeng/menu';
-
+import { MessagesModule } from 'primeng/messages';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,8 @@ import { MenuModule } from 'primeng/menu';
     PaginatorModule,
     ProgressSpinnerModule,
     MenuModule,
+    MessagesModule,
+    CarouselModule
   ],
   exports: [
     RecipePageComponent,

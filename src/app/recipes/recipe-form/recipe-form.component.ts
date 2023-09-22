@@ -15,7 +15,7 @@ export class RecipeFormComponent implements OnInit{
     ingredients: [],
     steps: [],
     image: '',
-    dietaryRestriction: '',
+    dietaryRestrictions: '',
     popularity: 0,
     rating: 0,
   };
