@@ -10,19 +10,37 @@ import { RecipeService } from 'src/app/recipe.service';
 })
 export class RecipeFormComponent implements OnInit{
   @Input() recipe: Recipe = {
-    id: 0,
-    recipeName: '',
-    ingredients: [],
-    steps: [],
-    image: '',
-    dietaryRestriction: '',
-    popularity: 0,
-    rating: 0,
+      recipeName: "",
+      ingredients: "",
+      steps: "",
+      image: "",
+      dietaryRestrictions: "",
+      createdOn: new Date(),
+      popularity: 0,
+      rating: 0
   };
+  addedImage=false;
+  file: any;
+  onFileSelected(event: any) {
+  
+     this.file = event.target.files[0];
+     this.addedImage=true;
+  }
   postRecipe(){
     this.recipeService.postRecipe(this.recipe).subscribe((data) => {
-      console.log(data)
-    });
+      this.recipe=data;
+      console.log(this.recipe.id)
+      if(this.addedImage)
+      {
+        
+        if (this.file && this.recipe.id !== undefined) 
+        {
+          this.recipeService.uploadImage(this.file, this.recipe.id).subscribe((data) => {
+
+          });
+        }
+      }});
+    
     console.log(this.recipe);
   }
   constructor(private recipeService: RecipeService){}

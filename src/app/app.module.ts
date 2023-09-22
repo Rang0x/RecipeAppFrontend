@@ -49,6 +49,7 @@ const appRoutes: Routes = [
   {path:'Edit-recipe', canActivate: [authGuard], component: RecipeEditComponent},
   {path: '**', component: NotFoundComponent}
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,9 +82,12 @@ const appRoutes: Routes = [
     PasswordModule,
     CheckboxModule,
     ToastModule,
+    sideBar
     RouterModule.forRoot(appRoutes),
     MenuModule,
     BadgeModule
+    MenuModule
+    master
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
