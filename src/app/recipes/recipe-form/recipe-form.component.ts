@@ -1,6 +1,7 @@
 import { Component , Input, OnInit } from '@angular/core';
 import { Recipe } from '../../recipe';
 import { RecipeService } from 'src/app/recipe.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,11 +14,9 @@ export class RecipeFormComponent implements OnInit{
       recipeName: "",
       ingredients: "",
       steps: "",
-      image: "",
       dietaryRestrictions: "",
-      createdOn: new Date(),
-      popularity: 0,
-      rating: 0
+      //categories: "Dinner",
+      userId: 1,
   };
   addedImage=false;
   file: any;
@@ -39,11 +38,16 @@ export class RecipeFormComponent implements OnInit{
 
           });
         }
-      }});
+      }
+      if(this.recipe.id !== undefined)
+      {
+        this.router.navigate(['recipes', this.recipe.id]);
+      }
+    });
     
     console.log(this.recipe);
   }
-  constructor(private recipeService: RecipeService){}
+  constructor(private recipeService: RecipeService,private router: Router){}
   ngOnInit(): void {
     localStorage.setItem("currentPage", "Add-recipe");
   }

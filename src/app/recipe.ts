@@ -8,4 +8,6 @@ export interface Recipe {
         createdOn?: Date;
         popularity?: number;
         rating?: number;
+        categories?: string;
+        userId?: any;
 }

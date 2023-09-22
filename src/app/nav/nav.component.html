@@ -1,13 +1,22 @@
 <div class="header fixed-top">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="logo navbar-brand" style="width: 130px;" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="logo navbar-brand" style="width: 1rem;" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <span class="mealify-text">Mealify</span><span class="dot">.</span>
         </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="options navbar-nav">
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <!-- <li class="nav-item">
+                    <a class="nav-link recipes" routerLink="/Browse" routerLinkActive="active">Recipes</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link recipes" routerLink="/Browse" routerLinkActive="active">Recipes</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link recipes" routerLink="/Browse" routerLinkActive="active">Recipes</a>
+                </li> -->
             </div>
             <div class="search-box">
                 <div class="mt-2 m-auto collapse navbar-collapse" id="navbarNavDropdown">

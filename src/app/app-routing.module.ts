@@ -14,15 +14,14 @@ import { MyRecipesComponent } from './recipes/my-recipes/my-recipes.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
-  {path:'search',component: SearchComponent},
+  {path:'search', canActivate: [authGuard],component: SearchComponent},
   {path:'About',component: AboutComponent},
-  {path:'Browse',component: BrowseComponent},
+  {path:'Browse', canActivate: [authGuard],component: BrowseComponent},
   {path: 'recipes/:id', canActivate: [authGuard], component: RecipePageComponent },
   {path:'Login',component: LoginComponent},
   {path:'Register',component: RegisterComponent},
-  {path:'Add-recipe',  component: RecipeFormComponent},
+  {path:'Add-recipe', canActivate: [authGuard], component: RecipeFormComponent},
   {path:'Edit-recipe', canActivate: [authGuard], component: RecipeEditComponent},
-  {path :'My-Recipes', component:MyRecipesComponent},
 ];
 
 @NgModule({
