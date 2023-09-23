@@ -9,4 +9,6 @@ export interface Recipe {
         popularity?: number;
         rating?: number;
         categories?: string;
+        userId?: any;
+
 }
