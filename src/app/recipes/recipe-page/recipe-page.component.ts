@@ -32,12 +32,12 @@ export class RecipePageComponent {
         rating: 4
       },
       {
-        name: 'Sara',
+        name: 'Sarah',
         text: 'Best Ever Nutella Brownies',
         rating: 4
       },
       {
-        name: 'Sara',
+        name: 'Sarah',
         text: 'Best Ever Nutella Brownies',
         rating: 2
       }
