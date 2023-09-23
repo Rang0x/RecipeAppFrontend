@@ -21,7 +21,9 @@ export class SidebarComponent implements OnInit{
               },
               {
                 label: 'My Recipes',
-                icon: 'pi pi-fw pi-th-large'
+                icon: 'pi pi-fw pi-th-large',
+            
+                routerLink: 'My-recipes'
               },
               {
                   label: 'Add Recipe',
