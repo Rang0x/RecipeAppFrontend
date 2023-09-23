@@ -1,57 +1,55 @@
 <div class="">
 <div class="rPage container">
     <div class="row">
-        <div class="col-12 pt-8 pb-3 md:col-6 d-flex flex-column align-items-center overflow-hidden">
-            <img [src]="'https://localhost:7288/' + recipe.image" alt="{{recipe.recipeName}}" class="card-img rounded mt-0 mb-7 max-h-25rem max-w-30rem m-auto d-block" >
-            <div class="scrolldown-wrapper">
-                <div class="scrolldown">
-                    <svg height="30" width="10">
-                        <circle class="scrolldown-p1" cx="5" cy="15" r="2" />
-                        <circle class="scrolldown-p2" cx="5" cy="15" r="2" />
-                    </svg>
-                </div>
+        <div class="w-75 m-auto d-flex">
+            <div class="col-6 pt-8 pb-3 md:col-6 d-flex flex-column align-items-center overflow-hidden">
+                <img [src]="'https://localhost:7288/' + recipe.image" alt="{{recipe.recipeName}}" class="card-img rounded mt-0 mb-2 max-h-25rem max-w-30rem m-auto d-block" >
+                <p-messages [(value)]="messages" [enableService]="true" [closable]="false"></p-messages>
+                <!-- <div class="scrolldown-wrapper">
+                    <div class="scrolldown">
+                        <svg height="30" width="10">
+                            <circle class="scrolldown-p1" cx="5" cy="15" r="2" />
+                            <circle class="scrolldown-p2" cx="5" cy="15" r="2" />
+                        </svg>
+                    </div>
+                </div> -->
             </div>
-        </div>
-        <div class="col-12 md:col-6 py-8 px-4 text-center md:text-left flex align-items-center ">
-            <section class="card">
-                <span class="block text-4xl font-bold ">{{recipe.recipeName}}</span>
-                <p class="card-text"></p><p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
-                <div class="text-3xl text-primary font-bold mt-5">Ingredients</div>
-                <ul class="mt-0 mb-4 text-700 line-height-3">
-                    <li *ngFor="let ingredient of recipe.ingredients | split; let i = index">{{ ingredient }}</li>
-                </ul>
-                <div class="text-3xl text-primary font-bold mt-5">Steps</div>
-                <ul class="mt-0 mb-4 text-700 line-height-3">
-                    <li *ngFor="let step of recipe.steps | split; let i = index">{{ step }}</li>
-                </ul>
-                <button pButton pRipple label="Add to Favourite" disabled type="button" class="mr-3 p-button-raised"></button>
-            </section>
-        </div>
-    </div>
-    <div class="row g-0">
-        <!-- Recipe Cardddd -->
-        <!-- <div class="card mb-3 w-75 m-auto" >
-        <div class="col-md-4">
-            <img [src]="'https://localhost:7288/' + recipe.image" alt="{{recipe.recipeName}}" class="w-100">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
+            <div class="col-6 md:col-6 py-8 px-4 text-center md:text-left d-flex justify-content-center align-items-center ">
                 <section class="card">
                     <span class="block text-4xl font-bold ">{{recipe.recipeName}}</span>
-                    <p class="card-text"></p><p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
-                    <div class="text-3xl text-primary font-bold mt-5">Ingredients</div>
-                    <ul class="mt-0 mb-4 text-700 line-height-3">
+                    <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating>
+                    <p class="mt-1">Categories: <span class="fw-bold text-primary-800">Launch Recipes</span></p>
+                    <!-- <p class="card-text"></p><p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+                    <div class="text-3xl text-primary font-bold mt-2">Ingredients</div>
+                    <ul class="mt-0 mb-2 text-700 line-height-3">
                         <li *ngFor="let ingredient of recipe.ingredients | split; let i = index">{{ ingredient }}</li>
                     </ul>
-                    <div class="text-3xl text-primary font-bold mt-5">Steps</div>
+                    <div class="text-3xl text-primary font-bold mt-2">Steps</div>
                     <ul class="mt-0 mb-4 text-700 line-height-3">
                         <li *ngFor="let step of recipe.steps | split; let i = index">{{ step }}</li>
                     </ul>
                     <button pButton pRipple label="Add to Favourite" disabled type="button" class="mr-3 p-button-raised"></button>
                 </section>
             </div>
-          </div>
         </div>
-      </div> -->
-</div>
+        <div class="w-75 mb-7 m-auto ">
+            <div class="card text-center reviewsSection">
+                <h5 class="fw-bold ms-8">Reviews</h5>
+                <p-carousel [value]="reviews" [numVisible]="3" [numScroll]="3" [circular]="false">
+                    <ng-template let-review  pTemplate="item">
+                            <div class="border-round m-2 p-3 text-center bg-white-alpha-90 p-2" style="border: 1px solid var(--surface-d)">
+                                <div class="mt-5 mb-2">
+                                    <img src="../../../assets/img/reviews.webp"  width="35%"/>
+                                </div>
+                                <div>
+                                    <h4 class="mb-1">{{review.name}}</h4>
+                                    <h6>{{review.text}}</h6>
+                                    <p-rating class="mt-2" [(ngModel)]="review.rating" [cancel]="false"></p-rating>
+                                </div>
+                            </div>
+                    </ng-template>
+                </p-carousel>
+            </div>
+        </div>
+    </div>
 </div>

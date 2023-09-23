@@ -21,13 +21,14 @@
           <div class="card mb-3 recipe-card">
             <a [routerLink]="['/recipes', recipe.id]">
               <div class="card-img-container">
-                <img [src]="'https://localhost:7288/' + recipe.image" class="recipe-image" alt="recipe image">
+                <img [src]="'https://localhost:7288/' + recipe.image" class="recipe-image rounded-3" alt="recipe image">
               </div>
-              <div class="card-body" style="height: 100px;">
+              <div class="card-body text-center" style="height: 100px;">
                 <h3 class="card-title">{{ recipe.recipeName }}</h3>
                 <p class="card-text">Ingredients: {{ recipe.ingredients }}</p>
                 <p class="card-rating"></p>
-                <p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
+                <!-- <p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating> -->
+                <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating>
               </div>
             </a>
           </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../recipe.service';
-import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-browse',

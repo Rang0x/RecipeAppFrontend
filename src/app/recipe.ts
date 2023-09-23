@@ -10,4 +10,5 @@ export interface Recipe {
         rating?: number;
         categories?: string;
         userId?: any;
+
 }

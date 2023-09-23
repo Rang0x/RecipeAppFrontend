@@ -36,6 +36,8 @@ import { authGuard } from './auth.guard';
 import { ToastModule } from "primeng/toast";
 import { MessageService } from 'primeng/api';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MessagesModule } from 'primeng/messages';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     AboutComponent,
     SidebarComponent,
-    NotFoundComponent,
+    NotFoundComponent
     //SplitPipe,
     //LoginComponent,
     // RegisterComponent
@@ -69,9 +71,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
     PasswordModule,
     CheckboxModule,
     ToastModule,
+    sideBar
+    RouterModule.forRoot(appRoutes),
     MenuModule,
     BadgeModule,
-
+    MessagesModule,
+    CarouselModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

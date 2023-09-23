@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://route-ecommerce.onrender.com/'; 
+  private apiUrl = 'https://localhost:7288/api/'; 
+  // private apiUrl = 'https://route-ecommerce.onrender.com/'; 
   userData:BehaviorSubject<any> = new BehaviorSubject(null);
   loggedUserName:string = '';
   constructor(private _httpClient: HttpClient, private _router:Router) {
@@ -29,10 +30,10 @@ export class AuthService {
     this.userData.next(decodedToken);
   }
   register(registerData:object):Observable<any>{
-    return this._httpClient.post(this.apiUrl + 'api/v1/auth/signup', registerData)
+    return this._httpClient.post(this.apiUrl + 'User/register', registerData)
   }
   login(loginData:object):Observable<any>{
-    return this._httpClient.post(this.apiUrl + 'api/v1/auth/signin', loginData)
+    return this._httpClient.post('https://route-ecommerce.onrender.com/api/v1/auth/signin', loginData)
   }
   logout(){
     localStorage.removeItem('userToken');

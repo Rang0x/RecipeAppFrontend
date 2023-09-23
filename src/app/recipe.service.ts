@@ -20,6 +20,7 @@ export class RecipeService {
   getAllRecipes(): Observable<any>{
     return this.http.get(`${this.apiUrl}/GetAllRecipes`);
   }
+
   postRecipe(recipe:any): Observable<any>{
     return this.http.post(`${this.apiUrl}/AddRecipe`, recipe,{headers: {'Content-Type': 'application/json'}});
   }
