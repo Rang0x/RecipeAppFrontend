@@ -1,4 +1,4 @@
-<!-- <div class="browse container">
+<div class="browse container">
     <div class="row justify-content-center">
       <div *ngIf="isLoading; else loaded">
         <div class="card" style="display: flex; justify-content: center; align-items: center;">
@@ -8,15 +8,6 @@
       <ng-template #loaded>
         <div *ngIf="!recipeFound; else found">No Recipes were found in the database</div>
         <ng-template #found>
-          <div class ="sort">
-            <p-dropdown
-              [options]="sortOptions"
-              [(ngModel)]="selectedSortOption"
-              optionLabel="label"
-              [placeholder]="'Select a Sorting Option'"
-              (onChange)="onSortOptionChange()"
-            ></p-dropdown>
-          </div>
           <div class="col-md-4 col-sm-8 col-xs-16" *ngFor="let recipe of getRecipesForPage(currentPage); let i = index">
             <div class="card mb-3 recipe-card">
               <a [routerLink]="['/recipes', recipe.id]">
@@ -30,10 +21,15 @@
                   <p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
                 </div>
               </a>
+              <div class="btn-container">
+                <button class="btn btn-primary btn-sm" (click)="editRecipe(recipe.id)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteRecipe(recipe.id)">Delete</button>
+              </div>
             </div>
           </div>
         </ng-template>
       </ng-template>
-      <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="recipes.length"></p-paginator>
     </div>
-  </div> -->
+  </div>
+  <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="recipes.length"></p-paginator>
+  

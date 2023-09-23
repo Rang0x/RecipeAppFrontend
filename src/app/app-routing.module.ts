@@ -22,6 +22,7 @@ const routes: Routes = [
   {path:'Register',component: RegisterComponent},
   {path:'Add-recipe', canActivate: [authGuard], component: RecipeFormComponent},
   {path:'Edit-recipe', canActivate: [authGuard], component: RecipeEditComponent},
+  {path: 'My-recipes', component: MyRecipesComponent},
 ];
 
 @NgModule({
