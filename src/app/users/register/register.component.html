@@ -4,16 +4,16 @@
             <h5>Please fill this information :</h5>
             <div class="field">
                 <label >First Name</label>
-                <input pInputText formControlName="name" type="text" />
+                <input pInputText formControlName="firstName" type="text" />
                 <div *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched" class="alert alert-danger">
                     <p *ngIf="registerForm.get('name')?.errors?.['required']">Name is Required field</p>
                     <p *ngIf="registerForm.get('name')?.errors?.['minlength']">minlength of name should be 3 chars</p>
-                    <p *ngIf="registerForm.get('name')?.errors?.['maxlength']">maxlength of name should be 8 chars</p>
+                    <p *ngIf="registerForm.get('name')?.errors?.['maxlength']">maxlength of name should be 12 chars</p>
                 </div>
             </div>
             <div class="field">
                 <label >Last Name</label>
-                <input pInputText formControlName="rePassword" type="text" />
+                <input pInputText formControlName="lastName" type="text" />
             </div>
             <div class="field">
                 <label >Email</label>
@@ -22,10 +22,6 @@
                     <p *ngIf="registerForm.get('email')?.errors?.['required']">email is Required field</p>
                     <p *ngIf="registerForm.get('email')?.errors?.['email']">please enter valid email</p>
                 </div>
-            </div>
-            <div class="field">
-                <label >Phone</label>
-                <input pInputText formControlName="phone" type="text" />
             </div>
             <div class="field">
                 <label >Password</label>

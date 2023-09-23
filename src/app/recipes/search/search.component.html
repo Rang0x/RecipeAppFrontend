@@ -6,7 +6,7 @@
   d-flex flex-column align-items-center justify-content-center vh-90
 </div> -->
 
-<div class="search container ">
+<div class="search container mt-3 mb-8">
   <div class="title">
     <h2>{{recipes.length}} Recipes</h2>
   </div>
@@ -21,7 +21,8 @@
           <div class="card-body" style="height: 100px;">
             
             <h3 class="card-title">{{ recipe.recipeName }}</h3>
-            <p class="card-text">Ingredients: {{ recipe.ingredients }}</p>
+            <p class="mt-1">Categories: <span class="fw-bold text-primary-800">Launch Recipes</span></p>
+            <!-- <p class="card-text">Ingredients: {{ recipe.ingredients }}</p> -->
             <p class="card-text"></p><p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
             
           </div>
