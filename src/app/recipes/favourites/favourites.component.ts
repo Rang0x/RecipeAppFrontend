@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from '../recipe.service';
-import { Recipe } from '../recipe';
+import { Recipe } from 'src/app/recipe';
+import { RecipeService } from 'src/app/recipe.service';
 
-RecipeService
 @Component({
-  selector: 'app-homepage',
-  templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  selector: 'app-favourites',
+  templateUrl: './favourites.component.html',
+  styleUrls: ['./favourites.component.scss']
 })
-export class HomepageComponent implements OnInit{
+export class FavouritesComponent implements OnInit {
   recipes: Recipe[] = [];
   constructor(private recipeService: RecipeService){}
   ngOnInit(): void {
-    localStorage.setItem("currentPage", "");
+    localStorage.setItem("currentPage", "/My-favourites");
     this.recipeService.getAllRecipes().subscribe((res) => {
       console.log(res); 
       this.recipes = res;

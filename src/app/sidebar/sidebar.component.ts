@@ -33,7 +33,7 @@ export class SidebarComponent implements OnInit{
               {
                   label: 'My Favourites',
                   icon: 'pi pi-fw pi-heart',
-                  routerLink: 'Add-recipe'
+                  routerLink: 'My-favourites'
               }
           ]
       }]
