@@ -5,9 +5,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RecipeService {
- 
-
-
   private apiUrl = 'https://localhost:7288/Recipe'; 
  
 
@@ -63,9 +60,13 @@ export class RecipeService {
   getAllIngredients() {
     return this.http.get(`${this.apiUrl}/GetIngredients`);
   }
-    
-    
-  
-  
+  getCategories() {
+    return this.http.get(`${this.apiUrl}/GetCategory`);
+  }
+  getRecipesByCategoryID( id:any)
+  {
+    return this.http.get(`${this.apiUrl}/GetRecipesByCategory/${id}`);
+  }
+ 
 
 }

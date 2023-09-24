@@ -10,22 +10,65 @@ FormGroup
   styleUrls: ['./recipe-edit.component.scss']
 })
 export class RecipeEditComponent implements OnInit{
-   
+    selectedCategory:any;
     recipe!: any;
     addedImage=false;
     file: any;
+    categories: any = [];
     editForm = new FormGroup({
       recipeName : new FormControl(''),
       ingredients : new FormControl(''),
       steps : new FormControl(''),
       image : new FormControl(''),
-      dietaryRestrictions : new FormControl('')
-    })
-    onFileSelected(event: any) {
+      dietaryRestrictions : new FormControl(''),
+    });
+    
   
-      this.file = event.target.files[0];
-      this.addedImage=true;
-   }
+  onCategoryOptionChange(){
+    console.log(this.selectedCategory)
+    //console.log("clicked"+this.recipe.categoryId+","+this.selectedCategory.categoryId);
+    this.recipe.categoryId=("Recipe ID = "+this.selectedCategory.categoryId);
+    console.log(this.recipe.categoryId);
+
+  }
+  ngOnInit(): void {
+    
+    this.route.params.subscribe(params => {
+      const recipeId = params['id']; 
+      this.recipeService.getCategories().subscribe( 
+        (categories) =>{
+          this.categories=categories;
+          console.log(categories);
+        
+        })
+      this.recipeService.getRecipeById(recipeId).subscribe(
+
+        (recipe) => {
+          this.recipe = recipe;
+          console.log('Recipe:', this.recipe);
+          this.editForm.patchValue({
+            recipeName: this.recipe.recipeName,
+            ingredients: this.recipe.ingredients,
+            steps: this.recipe.steps,
+            dietaryRestrictions: this.recipe.dietaryRestrictions,
+    
+            
+          });
+          
+          //this.selectedCategory=this.recipe.categoryId;
+          console.log("hheerreee"+this.selectedCategory);
+          console.log(this.recipe.categoryId);
+
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+      
+    });
+    }
+    
+  constructor(private recipeService: RecipeService, private route :ActivatedRoute){}
   editRecipe(){
     console.log(this.recipe);
     this.recipeService.editRecipe(this.recipe,this.recipe.id).subscribe((data) => {
@@ -44,29 +87,11 @@ export class RecipeEditComponent implements OnInit{
     
     console.log(this.recipe);
   }
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const recipeId = params['id']; 
-      this.recipeService.getRecipeById(recipeId).subscribe(
-
-        (recipe) => {
-          this.recipe = recipe;
-          console.log('Recipe:', this.recipe);
-          this.editForm.patchValue({
-            recipeName: this.recipe.recipeName,
-            ingredients: this.recipe.ingredients,
-            steps: this.recipe.steps,
-            dietaryRestrictions: this.recipe.dietaryRestrictions
-          });
-
-        },
-        (error) => {
-          console.error('Error:', error);
-        }
-      );
-    });
-    }
-  constructor(private recipeService: RecipeService, private route :ActivatedRoute){}
+  onFileSelected(event: any) {
+  
+    this.file = event.target.files[0];
+    this.addedImage=true;
+ }
 }
 
 

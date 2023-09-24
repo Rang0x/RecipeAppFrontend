@@ -21,8 +21,10 @@ export class BrowseComponent implements OnInit {
   ];
 
   selectedSortOption: any = '';
+  selectedCategory:any;
   selectedIngredients: any ='';
   ingredients: any = [];
+  categories: any = [];
 
   constructor(private recipeService: RecipeService) { }
 
@@ -33,6 +35,11 @@ export class BrowseComponent implements OnInit {
       (ingredients) =>{
         this.ingredients=ingredients;
         console.log(this.ingredients);
+      }
+    )
+    this.recipeService.getCategories().subscribe(
+      (categories) =>{
+        this.categories=categories;
       }
     )
   }
@@ -87,12 +94,21 @@ export class BrowseComponent implements OnInit {
       
     }
   }
-  onFilterOptionChange(){
-    this.recipeService.getRecipesByIngredients(this.selectedIngredients).subscribe(
-      (data) => {
-        console.log(data);
+    onFilterOptionChange(){
+      this.recipeService.getRecipesByIngredients(this.selectedIngredients).subscribe(
+        (data) => {
+          console.log(data);
+          this.recipes=data;
+        
+    });
+  }
+  onCategoryOptionChange()
+  {
+    console.log(this.selectedCategory);
+    this.recipeService.getRecipesByCategoryID(this.selectedCategory.categoryId).subscribe(
+       (data) => {
         this.recipes=data;
-      
-  });
-}
+       }); 
+
+  }
 }
