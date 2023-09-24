@@ -3,11 +3,14 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Recipe } from 'src/app/recipe';
 import { RecipeService } from 'src/app/recipe.service';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
+
 FormGroup
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-edit.component.scss']
+  styleUrls: ['./recipe-edit.component.scss'],
+  providers: [MessageService]
 })
 export class RecipeEditComponent implements OnInit{
     selectedCategory:any;
@@ -24,7 +27,6 @@ export class RecipeEditComponent implements OnInit{
       categoryName : new FormControl(''),
     });
     
-  
   onCategoryOptionChange(e:any){
     //console.log(this.selectedCategory)
     console.log("clicked"+this.recipe.categoryId);
@@ -70,13 +72,13 @@ export class RecipeEditComponent implements OnInit{
     });
     }
     
-  constructor(private recipeService: RecipeService, private route :ActivatedRoute){}
+  constructor(private recipeService: RecipeService, private route :ActivatedRoute, private messageService: MessageService){}
   editRecipe(){
     this.recipeService.editRecipe(this.recipe,this.recipe.id).subscribe((data) => {
       console.log(this.recipe)
+      this.showLife()
       if(this.addedImage)
       {
-        
         if (this.file && this.recipe.id !== undefined) 
         {
           this.recipeService.uploadImage(this.file, this.recipe.id).subscribe((data) => {
@@ -97,7 +99,9 @@ export class RecipeEditComponent implements OnInit{
     this.file = event.target.files[0];
     this.addedImage=true;
  }
- 
+  showLife(){
+  this.messageService.add({ severity: 'success', summary: 'Recipe Edit', detail: 'Recipe Updated Successfully!' });
+}
 }
 
 

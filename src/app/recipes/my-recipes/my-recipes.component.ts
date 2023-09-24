@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { RecipeService } from 'src/app/recipe.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class MyRecipesComponent {
 
   selectedSortOption: any = '';
 
-  constructor(private recipeService: RecipeService,private router: Router) { }
+  constructor(private recipeService: RecipeService,private router: Router,private messageService:MessageService) { }
 
   ngOnInit() {
     this.loadRecipes();
@@ -65,6 +66,19 @@ export class MyRecipesComponent {
   editRecipe(recipeId: number) {
     this.router.navigate(['/Edit-recipe', recipeId]);
     
+  }
+  test(){
+    alert("HEYY")
+  }
+  onConfirm(){
+    alert("CONFIRRMMM")
+  }
+  onReject(){
+    alert("REJEECT")
+  }
+  showConfirm(){
+    
+      this.messageService.add({ severity: 'error', summary: 'Recipe Delete', detail: 'Are you sure ?', sticky: true, key: 'confirm' });
   }
 }
 

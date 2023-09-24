@@ -25,6 +25,7 @@ import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { MessagesModule } from 'primeng/messages';
 import { CarouselModule } from 'primeng/carousel';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { FavouritesComponent } from './favourites/favourites.component';
     ProgressSpinnerModule,
     MenuModule,
     MessagesModule,
-    CarouselModule
+    CarouselModule,
+    ToastModule
   ],
   exports: [
     RecipePageComponent,
