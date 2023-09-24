@@ -36,6 +36,7 @@ import { authGuard } from './auth.guard';
 import { ToastModule } from "primeng/toast";
 import { MessageService } from 'primeng/api';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ToastModule,
     MenuModule,
     BadgeModule,
-
+    InputTextareaModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

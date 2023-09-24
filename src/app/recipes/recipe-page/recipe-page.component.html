@@ -18,7 +18,7 @@
                 <section class="card">
                     <span class="block text-4xl font-bold ">{{recipe.recipeName}}</span>
                     <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating>
-                    <p class="mt-1">Categories: <span class="fw-bold text-primary-800">Launch Recipes</span></p>
+                    <p class="mt-1">Categories: <span class="fw-bold text-primary-800">{{recipe}}</span></p>
                     <!-- <p class="card-text"></p><p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating> -->
                     <div class="text-3xl text-primary font-bold mt-2">Ingredients</div>
                     <ul class="mt-0 mb-2 text-700 line-height-3">
@@ -46,9 +46,15 @@
                                     <h6>{{review.text}}</h6>
                                     <p-rating class="mt-2" [(ngModel)]="review.rating" [cancel]="false"></p-rating>
                                 </div>
+                                
                             </div>
-                    </ng-template>
-                </p-carousel>
+                        </ng-template>
+                    </p-carousel>
+                    <span class="d-flex flex-column align-items-center">
+                        <h5 class="fw-bold mb-0 mt-6">Add Review</h5>
+                        <textarea class="border border-1 border-danger p-5 rounded-2 mt-4 mb-3" style="width: 85%; height: 150px;" pInputTextarea></textarea>
+                        <button pButton  label="Add review" type="button" class="w-11rem m-auto p-button-raised"></button>
+                    </span>
             </div>
         </div>
     </div>
