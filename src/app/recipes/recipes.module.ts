@@ -24,6 +24,7 @@ import { MenuModule } from 'primeng/menu';
 import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { MessagesModule } from 'primeng/messages';
 import { CarouselModule } from 'primeng/carousel';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { CarouselModule } from 'primeng/carousel';
     SearchComponent, 
     BrowseComponent,
     SplitPipe,
-    RecipeFormComponent, RecipeEditComponent, MyRecipesComponent],
+    RecipeFormComponent, RecipeEditComponent, MyRecipesComponent, FavouritesComponent],
   imports: [
     CardModule,
     CommonModule,

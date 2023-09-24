@@ -31,5 +31,7 @@
       </ng-template>
     </div>
   </div>
-  <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="recipes.length"></p-paginator>
+  <div class="my-8">
+    <p-paginator (onPageChange)="onPageChange($event)" [rows]="rows" [totalRecords]="recipes.length"></p-paginator>
+  </div>
   

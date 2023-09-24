@@ -1,0 +1,10 @@
+.hoverBtn {
+    position: relative;
+    top: 120px;
+    transition: all 0.4s;
+}
+
+.recipe-card:hover .hoverBtn {
+    display: block;
+    top: 0;
+}

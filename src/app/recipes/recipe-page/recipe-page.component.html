@@ -14,8 +14,8 @@
                     </div>
                 </div> -->
             </div>
-            <div class="col-6 md:col-6 py-8 px-4 text-center md:text-left d-flex justify-content-center align-items-center ">
-                <section class="card">
+            <div class="col-6 md:col-6 py-8 px-4  md:text-left d-flex justify-content-center align-items-center ">
+                <section class="card px-6">
                     <span class="block text-4xl font-bold ">{{recipe.recipeName}}</span>
                     <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating>
                     <p class="mt-1">Categories: <span class="fw-bold text-primary-800">{{recipe}}</span></p>
@@ -28,7 +28,7 @@
                     <ul class="mt-0 mb-4 text-700 line-height-3">
                         <li *ngFor="let step of recipe.steps | split; let i = index">{{ step }}</li>
                     </ul>
-                    <button pButton pRipple label="Add to Favourite" disabled type="button" class="mr-3 p-button-raised"></button>
+                    <button pButton pRipple label="Add to Favourite" type="button" class="mr-3 p-button-raised"></button>
                 </section>
             </div>
         </div>

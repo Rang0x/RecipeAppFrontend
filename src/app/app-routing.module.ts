@@ -11,6 +11,7 @@ import { BrowseComponent } from './recipes/browse/browse.component';
 import { RecipeFormComponent } from './recipes/recipe-form/recipe-form.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { MyRecipesComponent } from './recipes/my-recipes/my-recipes.component';
+import { FavouritesComponent } from './recipes/favourites/favourites.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'Login',component: LoginComponent},
   {path:'Register',component: RegisterComponent},
   {path:'Add-recipe', canActivate: [authGuard], component: RecipeFormComponent},
+  {path:'My-favourites', canActivate: [authGuard], component: FavouritesComponent},
   {path:'Edit-recipe/:id', canActivate: [authGuard], component: RecipeEditComponent},
   {path: 'My-recipes',canActivate: [authGuard], component: MyRecipesComponent},
 ];

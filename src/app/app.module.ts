@@ -72,7 +72,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ToastModule,
     MenuModule,
     BadgeModule,
-    InputTextareaModule
+    InputTextareaModule,
+    RouterModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

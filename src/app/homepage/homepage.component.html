@@ -15,5 +15,25 @@
             <img src="assets/img/hero-img.png" alt="Image" class="hero-img md:ml-auto p-6 block md:h-full" style="width: 75%;">
         </div>
     </div>
+    <div class="position-relative mb-4">
+        <div class="overlay d-flex justify-content-center align-items-center">
+            <p-button [routerLink]="['/Login']" routerLinkActive="router-link-active"  icon="pi pi-check" styleClass="p-button-lg" label="DISCOVER NOW"></p-button>
+        </div>
+        <div class="row">
+            <div *ngFor="let recipe of recipes" class="col-md-4">
+                <div [routerLink]="['/recipes', recipe.id]" routerLinkActive="router-link-active"  class="card  recipe-card">
+                    <div class="card-img-container">
+                        <img [src]="'https://localhost:7288/' + recipe.image" class="recipe-image rounded-3" alt="recipe image">
+                    </div>
+                    <div class="card-body text-center" style="height: 100px;">
+                        <h3 class="card-title">{{ recipe.recipeName }}</h3>
+                        <p class="card-rating"></p>
+                        <p-rating [(ngModel)]="recipe.rating" ></p-rating>
+                    <!-- <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 

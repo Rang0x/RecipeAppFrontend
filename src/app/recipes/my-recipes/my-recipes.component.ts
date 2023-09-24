@@ -16,7 +16,7 @@ export class MyRecipesComponent {
   recipeFound = false;
   sortOptions: any[] = [
     //{ label: 'Popularity', value: 'Popularity' },
-    { label: 'none', value: 'none' },
+    { label: 'none', value: 'None' },
     { label: 'Rating', value: 'Rating' },
     //{ label: 'Most Recent', value: 'Recent' },
   ];
