@@ -56,25 +56,9 @@ export class MyRecipesComponent {
     this.currentPage = event.page + 1;
   }
 
-  onSortOptionChange() {
-    console.log(this.selectedSortOption);
-    if (this.selectedSortOption.label=== 'Rating') {
-      console.log('Selected Sort Option:', this.selectedSortOption);
-
-      this.isLoading = true;
-      this.recipeService.sortByRating().subscribe((recipes) => {
-        console.log('Selected Sort Option:', this.selectedSortOption);
-        this.recipes = recipes;
-        this.isLoading = false;
-      });
-    } else {
-      this.loadRecipes();
-      
-    }
-  }
   deleteRecipe(recipeId: number) {
-    this.recipeService.deleteRecipe(recipeId).subscribe((recipes) => {
-      console.log('Deleted Recipe:', recipeId);
+    this.recipeService.deleteRecipe(recipeId).subscribe((data) => {
+      console.log(data);
       this.loadRecipes();
   });
 }

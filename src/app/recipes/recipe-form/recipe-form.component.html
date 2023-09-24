@@ -20,6 +20,13 @@
         <label>Dietary Restrictions</label>
         <input pInputText id="" [(ngModel)]="recipe.dietaryRestrictions" placeholder="Enter Dietary Restrictions" type="text" />
     </div>
+    <p-dropdown 
+            [options]="categories" 
+            [(ngModel)]="selectedCategory" 
+            optionLabel="categoryName"
+            [placeholder]="'Add Category'"
+            (onChange)="onCategoryOptionChange()"
+          ></p-dropdown>
     <div class="field">
         <button pButton (click)="postRecipe()">Add</button>
     </div>

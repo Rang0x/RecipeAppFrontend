@@ -3,7 +3,7 @@
         <h5>Edit Recipe</h5>
         <div class="field">
             <label>Name</label>
-            <input pInputText formControlName="recipeName"  id="" placeholder="Lol" type="text" />
+            <input pInputText formControlName="recipeName" id="" placeholder="Lol" type="text" />
         </div>
         <div class="field">
             <label>Ingredients</label>
@@ -11,18 +11,28 @@
         </div>
         <div class="field">
             <label>Steps</label>
-            <input pInputText formControlName="steps" id="" placeholder="Enter Steps" type="text" />
+            <input pInputText formControlName="steps" id=""  placeholder="Enter Steps" type="text" />
         </div>
         <div class="field">
             <label>Upload Image</label>
-            <input pInputText id="" formControlName="image" placeholder="Enter Steps" type="file" />
+            <input pInputText id="" formControlName="image" (change)="onFileSelected($event) "placeholder="Enter Image" type="file" />
         </div>
         <div class="field">
             <label>Dietary Restrictions</label>
             <input pInputText id="" formControlName="dietaryRestrictions"  placeholder="Enter Steps" type="text" />
         </div>
         <div class="field">
+            <label>Category </label>
+            <select class="form-select form-select-sm mb-3" formControlName="categoryName" (change)="onCategoryOptionChange($event) ">
+                <option *ngFor="let category of categories" value={{category.categoryId}}>{{category.categoryName}}</option>
+            </select>
+            
+        </div>
+        
+        <div class="field">
             <button pButton type="submit">Edit</button>
         </div>
     </div>
-</form>
+
+
+    

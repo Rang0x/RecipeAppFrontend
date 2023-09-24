@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Recipe } from 'src/app/recipe';
 import { RecipeService } from 'src/app/recipe.service';
+import { ActivatedRoute } from '@angular/router';
 FormGroup
 @Component({
   selector: 'app-recipe-edit',
@@ -9,32 +10,97 @@ FormGroup
   styleUrls: ['./recipe-edit.component.scss']
 })
 export class RecipeEditComponent implements OnInit{
-    recipeToEdit!: Recipe;
+    selectedCategory:any;
+    recipe!: any;
+    addedImage=false;
+    file: any;
+    categories: any = [];
     editForm = new FormGroup({
-      recipeName : new FormControl(`${this.recipeToEdit}`),
+      recipeName : new FormControl(''),
       ingredients : new FormControl(''),
       steps : new FormControl(''),
       image : new FormControl(''),
-      dietaryRestrictions : new FormControl('')
-    })
-  editRecipe(){
-    console.log(this.editForm.value)
-  }
-  getRecipeById(){
-    this.recipeService.getRecipeById(1).subscribe({
-      next: (data) => this.recipeToEdit = data,
-      complete: () => this.editForm = new FormGroup({
-        recipeName : new FormControl(`${this.recipeToEdit.recipeName}`),
-        ingredients : new FormControl(`${this.recipeToEdit.ingredients}`),
-        steps : new FormControl(`${this.recipeToEdit.steps}`),
-        image : new FormControl(`${this.recipeToEdit.image}`),
-        dietaryRestrictions : new FormControl(`${this.recipeToEdit.dietaryRestrictions}`)
-      })
+      dietaryRestrictions : new FormControl(''),
+      categoryName : new FormControl(''),
     });
+    
+  
+  onCategoryOptionChange(e:any){
+    //console.log(this.selectedCategory)
+    console.log("clicked"+this.recipe.categoryId);
+    this.recipe.categoryId=e.target.value;
+    console.log(this.recipe.categoryId);
+
   }
   ngOnInit(): void {
-    localStorage.setItem("currentPage", "Edit-recipe");
-    this.getRecipeById();
+    
+    this.route.params.subscribe(params => {
+      const recipeId = params['id']; 
+      this.recipeService.getCategories().subscribe( 
+        (categories) =>{
+          this.categories=categories;
+          console.log(categories);
+        
+        })
+      this.recipeService.getRecipeById(recipeId).subscribe(
+
+        (recipe) => {
+          this.recipe = recipe;
+          console.log('Recipe:', this.recipe);
+          this.editForm.patchValue({
+            recipeName: this.recipe.recipeName,
+            ingredients: this.recipe.ingredients,
+            steps: this.recipe.steps,
+            dietaryRestrictions: this.recipe.dietaryRestrictions,
+            categoryName: this.recipe.categoryName
+    
+            
+          });
+          
+          //this.selectedCategory=this.recipe.categoryId;
+          console.log("hheerreee"+this.selectedCategory);
+          console.log(this.recipe.categoryId);
+
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+      
+    });
     }
-  constructor(private recipeService: RecipeService){}
+    
+  constructor(private recipeService: RecipeService, private route :ActivatedRoute){}
+  editRecipe(){
+    this.recipeService.editRecipe(this.recipe,this.recipe.id).subscribe((data) => {
+      console.log(this.recipe)
+      if(this.addedImage)
+      {
+        
+        if (this.file && this.recipe.id !== undefined) 
+        {
+          this.recipeService.uploadImage(this.file, this.recipe.id).subscribe((data) => {
+
+          });
+        }
+      }
+      this.recipe.recipeName = this.editForm.get('recipeName')?.value;
+      this.recipe.ingredients = this.editForm.get('ingredients')?.value;
+      this.recipe.steps = this.editForm.get('steps')?.value;
+      this.recipe.dietaryRestrictions = this.editForm.get('dietaryRestrictions')?.value;
+    });
+    
+    console.log(this.recipe);
+  }
+  onFileSelected(event: any) {
+  
+    this.file = event.target.files[0];
+    this.addedImage=true;
+ }
+ 
 }
+
+
+
+
+
