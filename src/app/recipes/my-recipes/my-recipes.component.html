@@ -21,9 +21,9 @@
                   <p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
                 </div>
               </a>
-              <div class="btn-container">
-                <button class="btn btn-primary btn-sm" (click)="editRecipe(recipe.id)">Edit</button>
-                <button class="btn btn-danger btn-sm" (click)="deleteRecipe(recipe.id)">Delete</button>
+              <div class="btn-container align-self-end">
+                <button class="btn btn-outline-primary mx-1" (click)="editRecipe(recipe.id)">Edit</button>
+                <button class="btn btn-outline-danger" (click)="deleteRecipe(recipe.id)">Delete</button>
               </div>
             </div>
           </div>
