@@ -15,11 +15,14 @@ export class RecipeFormComponent implements OnInit{
       ingredients: "",
       steps: "",
       dietaryRestrictions: "",
-      //categories: "Dinner",
+      categoryName: "",
       userId: 1,
   };
   addedImage=false;
   file: any;
+  selectedCategory:any;
+  
+  categories: any = [];
   onFileSelected(event: any) {
   
      this.file = event.target.files[0];
@@ -50,5 +53,13 @@ export class RecipeFormComponent implements OnInit{
   constructor(private recipeService: RecipeService,private router: Router){}
   ngOnInit(): void {
     localStorage.setItem("currentPage", "Add-recipe");
+    this.recipeService.getCategories().subscribe(
+      (categories) =>{
+        this.categories=categories;
+      }
+    )
+  }
+  onCategoryOptionChange(){
+    this.recipe.categoryName = this.selectedCategory.categoryName;
   }
 }

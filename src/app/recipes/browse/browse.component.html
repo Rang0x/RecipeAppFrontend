@@ -24,6 +24,14 @@
             [placeholder]="'Ingredients'"
             (onChange)="onFilterOptionChange()"
           ></p-multiSelect>
+
+          <p-dropdown
+            [options]="categories" 
+            [(ngModel)]="selectedCategory" 
+            optionLabel="categoryName"
+            [placeholder]="'Categories'"
+            (onChange)="onCategoryOptionChange()"
+          ></p-dropdown>
           
         </div>
         
