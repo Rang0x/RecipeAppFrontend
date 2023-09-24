@@ -25,15 +25,16 @@ export class AuthService {
   decodeUserToken(){
     let encodedToken:string = JSON.stringify( localStorage.getItem('userToken'));
     let decodedToken:any = jwtDecode(encodedToken);
-    console.log(decodedToken.name);
-    this.loggedUserName = decodedToken.name;
+    console.log(decodedToken);
+    this.loggedUserName = decodedToken.given_name;
+    console.log(this.loggedUserName);
     this.userData.next(decodedToken);
   }
   register(registerData:object):Observable<any>{
     return this._httpClient.post(this.apiUrl + 'User/register', registerData)
   }
   login(loginData:object):Observable<any>{
-    return this._httpClient.post('https://route-ecommerce.onrender.com/api/v1/auth/signin', loginData)
+    return this._httpClient.post(this.apiUrl + 'User/login', loginData)
   }
   logout(){
     localStorage.removeItem('userToken');
