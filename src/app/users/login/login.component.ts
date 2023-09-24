@@ -22,12 +22,10 @@ export class LoginComponent {
     this._AuthService.login(this.loginForm.value).subscribe(
       {
         next: (res) => {
-          if(res.message === 'success'){
             localStorage.setItem('userToken', res.token);
             this._AuthService.decodeUserToken();
             this.isLoading = false;
             this._router.navigate(['/Browse']);
-          }
         }
       }
     )
