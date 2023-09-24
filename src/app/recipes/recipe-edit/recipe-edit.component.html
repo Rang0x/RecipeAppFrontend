@@ -3,15 +3,15 @@
         <h5>Edit Recipe</h5>
         <div class="field">
             <label>Name</label>
-            <input pInputText formControlName="recipeName" [(ngModel)]="recipe.recipeName" id="" placeholder="Lol" type="text" />
+            <input pInputText formControlName="recipeName" id="" placeholder="Lol" type="text" />
         </div>
         <div class="field">
             <label>Ingredients</label>
-            <input pInputText formControlName="ingredients" [(ngModel)]="recipe.ingredients" id=""  placeholder="Enter Ingredients" type="text" />
+            <input pInputText formControlName="ingredients" id=""  placeholder="Enter Ingredients" type="text" />
         </div>
         <div class="field">
             <label>Steps</label>
-            <input pInputText formControlName="steps" id="" [(ngModel)]="recipe.steps" placeholder="Enter Steps" type="text" />
+            <input pInputText formControlName="steps" id=""  placeholder="Enter Steps" type="text" />
         </div>
         <div class="field">
             <label>Upload Image</label>
@@ -19,21 +19,15 @@
         </div>
         <div class="field">
             <label>Dietary Restrictions</label>
-            <input pInputText id="" formControlName="dietaryRestrictions" [(ngModel)]="recipe.dietaryRestrictions"  placeholder="Enter Steps" type="text" />
+            <input pInputText id="" formControlName="dietaryRestrictions"  placeholder="Enter Steps" type="text" />
         </div>
         <div class="field">
             <label>Category </label>
-            <p-dropdown 
-            [options]="categories" 
-            [(ngModel)]="selectedCategory" 
-            optionLabel="categoryName"
-            [placeholder]="'Add Category'"
-            (onChange)="onCategoryOptionChange()"
-            ></p-dropdown>
+            <select class="form-select form-select-sm mb-3" formControlName="categoryName" (change)="onCategoryOptionChange($event) ">
+                <option *ngFor="let category of categories" value={{category.categoryId}}>{{category.categoryName}}</option>
+            </select>
             
-            
-        
-    </div>
+        </div>
         
         <div class="field">
             <button pButton type="submit">Edit</button>

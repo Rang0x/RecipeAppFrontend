@@ -21,13 +21,14 @@ export class RecipeEditComponent implements OnInit{
       steps : new FormControl(''),
       image : new FormControl(''),
       dietaryRestrictions : new FormControl(''),
+      categoryName : new FormControl(''),
     });
     
   
-  onCategoryOptionChange(){
-    console.log(this.selectedCategory)
-    //console.log("clicked"+this.recipe.categoryId+","+this.selectedCategory.categoryId);
-    this.recipe.categoryId=("Recipe ID = "+this.selectedCategory.categoryId);
+  onCategoryOptionChange(e:any){
+    //console.log(this.selectedCategory)
+    console.log("clicked"+this.recipe.categoryId);
+    this.recipe.categoryId=e.target.value;
     console.log(this.recipe.categoryId);
 
   }
@@ -51,6 +52,7 @@ export class RecipeEditComponent implements OnInit{
             ingredients: this.recipe.ingredients,
             steps: this.recipe.steps,
             dietaryRestrictions: this.recipe.dietaryRestrictions,
+            categoryName: this.recipe.categoryName
     
             
           });
@@ -70,9 +72,7 @@ export class RecipeEditComponent implements OnInit{
     
   constructor(private recipeService: RecipeService, private route :ActivatedRoute){}
   editRecipe(){
-    console.log(this.recipe);
     this.recipeService.editRecipe(this.recipe,this.recipe.id).subscribe((data) => {
-      console.log(data);
       console.log(this.recipe)
       if(this.addedImage)
       {
@@ -83,7 +83,12 @@ export class RecipeEditComponent implements OnInit{
 
           });
         }
-      }});
+      }
+      this.recipe.recipeName = this.editForm.get('recipeName')?.value;
+      this.recipe.ingredients = this.editForm.get('ingredients')?.value;
+      this.recipe.steps = this.editForm.get('steps')?.value;
+      this.recipe.dietaryRestrictions = this.editForm.get('dietaryRestrictions')?.value;
+    });
     
     console.log(this.recipe);
   }
@@ -92,6 +97,7 @@ export class RecipeEditComponent implements OnInit{
     this.file = event.target.files[0];
     this.addedImage=true;
  }
+ 
 }
 
 
