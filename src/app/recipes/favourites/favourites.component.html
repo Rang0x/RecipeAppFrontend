@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row my-5">
         <div *ngFor="let recipe of recipes" class="col-md-4">
-            <div class="card mb-3 recipe-card w-75 m-auto">
+            <div class="card mb-3 recipe-card w-75 m-auto overflow-hidden">
                 <a [routerLink]="['/recipes', recipe.id]">
                     <div class="card-img-container">
                         <img [src]="'https://localhost:7288/' + recipe.image" class="recipe-image img-fluid rounded-3" alt="recipe image">

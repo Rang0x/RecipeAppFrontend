@@ -60,6 +60,7 @@ export class MyRecipesComponent {
   deleteRecipe(recipeId: number) {
     this.recipeService.deleteRecipe(recipeId).subscribe((data) => {
       console.log(data);
+      this.confirmDelete();
       this.loadRecipes();
   });
 }
@@ -77,8 +78,10 @@ export class MyRecipesComponent {
     alert("REJEECT")
   }
   showConfirm(){
-    
       this.messageService.add({ severity: 'error', summary: 'Recipe Delete', detail: 'Are you sure ?', sticky: true, key: 'confirm' });
+  }
+  confirmDelete(){
+      this.messageService.add({ severity: 'success', summary: 'Recipe Deleted Successfully!'});
   }
 }
 

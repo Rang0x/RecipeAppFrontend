@@ -2,6 +2,7 @@ import { Component , Input, OnInit } from '@angular/core';
 import { Recipe } from '../../recipe';
 import { RecipeService } from 'src/app/recipe.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -32,25 +33,25 @@ export class RecipeFormComponent implements OnInit{
     this.recipeService.postRecipe(this.recipe).subscribe((data) => {
       this.recipe=data;
       console.log(this.recipe.id)
+      this.showLife();
       if(this.addedImage)
       {
         
         if (this.file && this.recipe.id !== undefined) 
         {
           this.recipeService.uploadImage(this.file, this.recipe.id).subscribe((data) => {
-
           });
         }
       }
       if(this.recipe.id !== undefined)
       {
-        this.router.navigate(['recipes', this.recipe.id]);
+        this.router.navigate(['My-recipes']);
       }
     });
     
     console.log(this.recipe);
   }
-  constructor(private recipeService: RecipeService,private router: Router){}
+  constructor(private recipeService: RecipeService,private router: Router, private messageService: MessageService){}
   ngOnInit(): void {
     localStorage.setItem("currentPage", "Add-recipe");
     this.recipeService.getCategories().subscribe(
@@ -62,4 +63,7 @@ export class RecipeFormComponent implements OnInit{
   onCategoryOptionChange(){
     this.recipe.categoryName = this.selectedCategory.categoryName;
   }
+  showLife(){
+    this.messageService.add({ severity: 'success', summary: 'Recipe Add', detail: 'Recipe Added Successfully!' });
+    }
 }
