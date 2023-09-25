@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private apiUrl = 'https://localhost:7288/api/'; 
-  // private apiUrl = 'https://route-ecommerce.onrender.com/'; 
   userData:BehaviorSubject<any> = new BehaviorSubject(null);
   loggedUserName:string = '';
   constructor(private _httpClient: HttpClient, private _router:Router) {
