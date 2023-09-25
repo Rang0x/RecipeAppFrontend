@@ -3,11 +3,10 @@
 <div class="my-8">
     <div class="container-fluid">
         <div class="row">
-
-            <div class="col-md-2 pe-0">
+            <div *ngIf="isLogged" class="col-md-2 pe-0">
                 <app-sidebar></app-sidebar>
             </div> 
-            <div class="col-md-10 pe-0">
+            <div class="col-md-10 m-auto pe-0">
                 <router-outlet></router-outlet>
                 <app-footer></app-footer>
             </div>

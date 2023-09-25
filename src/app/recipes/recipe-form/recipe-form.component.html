@@ -14,7 +14,7 @@
     </div>
     <div class="field">
         <label for="fileInput">Upload Image</label>
-        <input pInputText id="fileInput" type="file" (change)="onFileSelected($event)"/>
+        <input pInputText id="fileInput" class="inputfile" type="file" required (change)="onFileSelected($event)"/>
     </div>
     <div class="field">
         <label>Dietary Restrictions</label>
@@ -30,4 +30,5 @@
     <div class="field mt-3">
         <button pButton (click)="postRecipe()">Add</button>
     </div>
+    <p-toast [life]="3000"></p-toast>
 </div>
