@@ -6,7 +6,7 @@
         </div>
       </div>
       <ng-template #loaded>
-        <div *ngIf="!recipeFound; else found">No Recipes were found in the database</div>
+        <div *ngIf="!recipeFound; else found">You have not posted any recipes yet</div>
         <ng-template #found>
           <div class="col-md-4 col-sm-8 col-xs-16" *ngFor="let recipe of getRecipesForPage(currentPage); let i = index">
             <div class="card mb-3 recipe-card">

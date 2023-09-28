@@ -21,9 +21,10 @@ export class BrowseComponent implements OnInit {
   ];
 
   selectedSortOption: any = '';
-  selectedCategory:any;
   selectedIngredients: any ='';
   ingredients: any = [];
+  selectedCategory:any;
+  
   categories: any = [];
 
   constructor(private recipeService: RecipeService) { }

@@ -11,15 +11,17 @@ import { Message } from 'primeng/api';
 })
 export class RecipePageComponent {
   reviews: any[] = [];
-  recipe!: Recipe;
+  recipe!: any;
   value!:number;
   dietaryRestriction: Message[] | any;
   messages: Message[] | any;
+  categories:any;
   constructor(private route: ActivatedRoute,private service: RecipeService){}
   ngOnInit() {
     // this.dietaryRestriction = [
     //   { severity: 'success', summary: 'Dietary Restrictions', detail: `${this.recipe.dietaryRestrictions}` }
     // ];
+
     this.reviews= [
       {
         name: 'Abdelrahman',
@@ -44,6 +46,11 @@ export class RecipePageComponent {
     ];
     this.route.params.subscribe(params => {
       const recipeId = params['id']; 
+      this.service.getCategories().subscribe(
+        (categories) => {
+          this.categories =categories;
+        }
+      );
       this.service.getRecipeById(recipeId).subscribe(
         (recipe) => {
           this.recipe = recipe;
@@ -57,7 +64,8 @@ export class RecipePageComponent {
       );
     });
   }
-  getIngredientsArray(): void{
-    
+  findCategoryName(categoryId: number): string {
+    const category = this.categories.find((cat: { categoryId: number; }) => cat.categoryId === categoryId);
+    return category ? category.categoryName : '';
   }
 }

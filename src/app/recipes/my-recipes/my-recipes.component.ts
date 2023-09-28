@@ -31,7 +31,9 @@ export class MyRecipesComponent {
   }
 
   loadRecipes() {
-    this.recipeService.getAllRecipes().subscribe(
+    const userId = localStorage.getItem('userId');
+    console.log(userId);
+    this.recipeService.getUserRecipes(userId).subscribe(
       (recipes) => {
         this.recipes = recipes;
         console.log('Recipes:', this.recipes);

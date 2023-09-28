@@ -24,6 +24,7 @@ export class LoginComponent {
         next: (res) => {
             localStorage.setItem('userToken', res.token);
             this._AuthService.decodeUserToken();
+            localStorage.setItem('userId',this._AuthService.userId);
             this.isLoading = false;
             this._router.navigate(['/Browse']);
         }

@@ -67,6 +67,10 @@ export class RecipeService {
   {
     return this.http.get(`${this.apiUrl}/GetRecipesByCategory/${id}`);
   }
+  getUserRecipes(id:any) :Observable<any> 
+  {
+    return this.http.get(`${this.apiUrl}/GetUserRecipes/${id}`);
+  }
  
 
 }

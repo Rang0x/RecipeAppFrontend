@@ -73,26 +73,24 @@ export class RecipeEditComponent implements OnInit{
     }
     
   constructor(private recipeService: RecipeService, private route :ActivatedRoute, private messageService: MessageService){}
-  editRecipe(){
-    this.recipeService.editRecipe(this.recipe,this.recipe.id).subscribe((data) => {
-      console.log(this.recipe)
-      this.showLife()
-      if(this.addedImage)
-      {
-        if (this.file && this.recipe.id !== undefined) 
-        {
-          this.recipeService.uploadImage(this.file, this.recipe.id).subscribe((data) => {
-          });
-        }
-      }
-      this.recipe.recipeName = this.editForm.get('recipeName')?.value;
-      this.recipe.ingredients = this.editForm.get('ingredients')?.value;
-      this.recipe.steps = this.editForm.get('steps')?.value;
-      this.recipe.dietaryRestrictions = this.editForm.get('dietaryRestrictions')?.value;
-    });
-    
+  editRecipe() {
+    // Update the recipe object with new values inside the subscribe block
+    this.recipe.recipeName = this.editForm.get('recipeName')?.value;
+    this.recipe.ingredients = this.editForm.get('ingredients')?.value;
+    this.recipe.steps = this.editForm.get('steps')?.value;
+    this.recipe.dietaryRestrictions = this.editForm.get('dietaryRestrictions')?.value;
     console.log(this.recipe);
+    this.recipeService.editRecipe(this.recipe, this.recipe.id).subscribe((data) => {
+      this.showLife();
+      
+      if (this.addedImage && this.file) {
+        this.recipeService.uploadImage(this.file, this.recipe.id).subscribe((data) => {
+          // Handle image upload response if needed
+        });
+      }
+    });
   }
+  
   onFileSelected(event: any) {
   
     this.file = event.target.files[0];

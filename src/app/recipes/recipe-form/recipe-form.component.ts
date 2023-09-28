@@ -17,7 +17,7 @@ export class RecipeFormComponent implements OnInit{
       steps: "",
       dietaryRestrictions: "",
       categoryName: "",
-      userId: 1,
+      userId: 4,
   };
   addedImage=false;
   file: any;

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable , BehaviorSubject } from 'rxjs';
@@ -12,6 +13,7 @@ export class AuthService {
   private apiUrl = 'https://localhost:7288/api/'; 
   userData:BehaviorSubject<any> = new BehaviorSubject(null);
   loggedUserName:string = '';
+  userId:any;
   constructor(private _httpClient: HttpClient, private _router:Router) {
     if(localStorage.getItem("userToken") === null){
       _router.navigate(["/Login"])
@@ -28,6 +30,7 @@ export class AuthService {
     this.loggedUserName = decodedToken.given_name;
     console.log(this.loggedUserName);
     this.userData.next(decodedToken);
+    this.userId=decodedToken.nameid;
   }
   register(registerData:object):Observable<any>{
     return this._httpClient.post(this.apiUrl + 'User/register', registerData)
