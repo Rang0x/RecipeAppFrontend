@@ -17,11 +17,7 @@ export class RecipeFormComponent implements OnInit{
       steps: "",
       dietaryRestrictions: "",
       categoryName: "",
-<<<<<<< Updated upstream
-      userId: 4,
-=======
       userId: Number(localStorage.getItem('userId'))
->>>>>>> Stashed changes
   };
   addedImage=false;
   file: any;

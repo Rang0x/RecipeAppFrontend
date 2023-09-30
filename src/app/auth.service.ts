@@ -13,12 +13,7 @@ export class AuthService {
   private apiUrl = 'https://localhost:7288/api/'; 
   userData:BehaviorSubject<any> = new BehaviorSubject(null);
   loggedUserName:string = '';
-<<<<<<< Updated upstream
   userId:any;
-=======
-  userId:string = '';
-  numberOfFav: BehaviorSubject<number> = new BehaviorSubject(0);
->>>>>>> Stashed changes
   constructor(private _httpClient: HttpClient, private _router:Router) {
     if(localStorage.getItem("userToken") === null){
       _router.navigate(["/Login"])

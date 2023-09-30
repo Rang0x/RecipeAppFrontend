@@ -11,7 +11,7 @@ export class NavComponent {
   isLogged: boolean = false;
   loggedUserName:string = '';
   searchValue:string ='';
-  value: any = this._authService.numberOfFav;
+  // value: any = this._authService.numberOfFav;
   items: any[] = [
     {
       label: 'Create Recipe',

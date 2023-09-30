@@ -24,11 +24,7 @@ export class LoginComponent {
         next: (res) => {
             localStorage.setItem('userToken', res.token);
             this._AuthService.decodeUserToken();
-<<<<<<< Updated upstream
             localStorage.setItem('userId',this._AuthService.userId);
-=======
-            localStorage.setItem('userId', this._AuthService.userId)
->>>>>>> Stashed changes
             this.isLoading = false;
             this._router.navigate(['/Browse']);
         }

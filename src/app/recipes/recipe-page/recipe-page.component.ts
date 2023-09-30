@@ -12,20 +12,12 @@ import { FavouritesService } from 'src/app/favourites.service';
 })
 export class RecipePageComponent {
   reviews: any[] = [];
-<<<<<<< Updated upstream
-  recipe!: any;
-  value!:number;
-  dietaryRestriction: Message[] | any;
-  messages: Message[] | any;
-  categories:any;
-  constructor(private route: ActivatedRoute,private service: RecipeService){}
-=======
   recipe!: Recipe;
   value!:string;
   dietaryRestriction: Message[] | any;
   messages: Message[] | any;
+  categories: any[] =[];
   constructor(private route: ActivatedRoute,private _recipeservice: RecipeService,private _favouritesService:FavouritesService, private _messageService: MessageService){}
->>>>>>> Stashed changes
   ngOnInit() {
     // this.dietaryRestriction = [
     //   { severity: 'success', summary: 'Dietary Restrictions', detail: `${this.recipe.dietaryRestrictions}` }
@@ -55,16 +47,7 @@ export class RecipePageComponent {
     ];
     this.route.params.subscribe(params => {
       const recipeId = params['id']; 
-<<<<<<< Updated upstream
-      this.service.getCategories().subscribe(
-        (categories) => {
-          this.categories =categories;
-        }
-      );
-      this.service.getRecipeById(recipeId).subscribe(
-=======
       this._recipeservice.getRecipeById(recipeId).subscribe(
->>>>>>> Stashed changes
         (recipe) => {
           this.recipe = recipe;
           console.log('Recipes:', this.recipe);
