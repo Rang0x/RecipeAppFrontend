@@ -4,7 +4,7 @@
         <div class="w-75 m-auto d-flex">
             <div class="col-6 pt-8 pb-3 md:col-6 d-flex flex-column align-items-center overflow-hidden">
                 <img [src]="'https://localhost:7288/' + recipe.image" alt="{{recipe.recipeName}}" class="card-img rounded mt-0 mb-2 max-h-25rem max-w-30rem m-auto d-block" >
-                <p-messages [(value)]="messages" [enableService]="true" [closable]="false"></p-messages>
+                <p-messages key="diet" [(value)]="messages" [enableService]="true" [closable]="false"></p-messages>
                 <!-- <div class="scrolldown-wrapper">
                     <div class="scrolldown">
                         <svg height="30" width="10">
@@ -28,7 +28,8 @@
                     <ul class="mt-0 mb-4 text-700 line-height-3">
                         <li *ngFor="let step of recipe.steps | split; let i = index">{{ step }}</li>
                     </ul>
-                    <button pButton pRipple label="Add to Favourite" type="button" class="mr-3 p-button-raised"></button>
+                    <button pButton pRipple label="Add to Favourite" (click)="addToFav(recipe.id!)" type="button" class="mr-3 p-button-raised"></button>
+                    <p-toast [life]="3000"></p-toast>
                 </section>
             </div>
         </div>

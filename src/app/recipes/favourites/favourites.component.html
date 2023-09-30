@@ -1,20 +1,33 @@
 <div class="container">
     <div class="row my-5">
-        <div *ngFor="let recipe of recipes" class="col-md-4">
-            <div class="card mb-3 recipe-card w-75 m-auto overflow-hidden">
-                <a [routerLink]="['/recipes', recipe.id]">
-                    <div class="card-img-container">
-                        <img [src]="'https://localhost:7288/' + recipe.image" class="recipe-image img-fluid rounded-3" alt="recipe image">
-                    </div>
-                    <div class="card-body text-center" style="height: 100px;">
-                        <h3 class="card-title">{{ recipe.recipeName }}</h3>
-                        <p class="card-rating"></p>
-                        <p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
-                    <!-- <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating> -->
-                </div>
-                </a>
-                <p-button icon="" label="Remove from favourites" class="m-auto hoverBtn"></p-button>
+        <div *ngIf="isLoading; else loaded">
+            <div class="card" style="display: flex; justify-content: center; align-items: center;">
+                <p-progressSpinner></p-progressSpinner>
             </div>
         </div>
+        <ng-template #loaded>
+            <div *ngIf="!recipeFound; else found" class="alert alert-danger">
+                <h3>No Recipes were found in the database</h3>
+            </div>
+            <ng-template #found>
+                <div *ngFor="let recipe of recipes" class="col-md-4">
+                    <div class="card mb-3 recipe-card w-75 m-auto overflow-hidden">
+                        <a [routerLink]="['/recipes', recipe.id]">
+                            <div class="card-img-container">
+                                <img [src]="'https://localhost:7288/' + recipe.image" class="recipe-image img-fluid rounded-3" alt="recipe image">
+                            </div>
+                            <div class="card-body text-center" style="height: 100px;">
+                                <h3 class="card-title">{{ recipe.recipeName }}</h3>
+                                <p class="card-rating"></p>
+                                <p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
+                            <!-- <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating> -->
+                        </div>
+                        </a>
+                        <p-button (click)="removeFav(recipe.id)" label="Remove from favourites" class="m-auto hoverBtn"></p-button>
+                    </div>
+                </div>
+                <p-toast key="del"></p-toast>
+            </ng-template>
+        </ng-template>
     </div>
 </div>

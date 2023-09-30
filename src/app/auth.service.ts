@@ -13,7 +13,12 @@ export class AuthService {
   private apiUrl = 'https://localhost:7288/api/'; 
   userData:BehaviorSubject<any> = new BehaviorSubject(null);
   loggedUserName:string = '';
+<<<<<<< Updated upstream
   userId:any;
+=======
+  userId:string = '';
+  numberOfFav: BehaviorSubject<number> = new BehaviorSubject(0);
+>>>>>>> Stashed changes
   constructor(private _httpClient: HttpClient, private _router:Router) {
     if(localStorage.getItem("userToken") === null){
       _router.navigate(["/Login"])
@@ -28,7 +33,9 @@ export class AuthService {
     let decodedToken:any = jwtDecode(encodedToken);
     console.log(decodedToken);
     this.loggedUserName = decodedToken.given_name;
+    this.userId = decodedToken.nameid; 
     console.log(this.loggedUserName);
+    console.log(this.userId);
     this.userData.next(decodedToken);
     this.userId=decodedToken.nameid;
   }

@@ -9,7 +9,7 @@ import { RecipeService } from 'src/app/recipe.service';
   styleUrls: ['./my-recipes.component.scss']
 })
 export class MyRecipesComponent {
-  value: string = '';
+  value: number = 0;
   recipes: any[] = [];
   rows = 6;
   currentPage = 1;
@@ -31,8 +31,12 @@ export class MyRecipesComponent {
   }
 
   loadRecipes() {
+<<<<<<< Updated upstream
     const userId = localStorage.getItem('userId');
     console.log(userId);
+=======
+    const userId = localStorage.getItem(`userId`);
+>>>>>>> Stashed changes
     this.recipeService.getUserRecipes(userId).subscribe(
       (recipes) => {
         this.recipes = recipes;

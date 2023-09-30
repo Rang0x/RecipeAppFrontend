@@ -17,7 +17,11 @@ export class RecipeFormComponent implements OnInit{
       steps: "",
       dietaryRestrictions: "",
       categoryName: "",
+<<<<<<< Updated upstream
       userId: 4,
+=======
+      userId: Number(localStorage.getItem('userId'))
+>>>>>>> Stashed changes
   };
   addedImage=false;
   file: any;
@@ -64,6 +68,6 @@ export class RecipeFormComponent implements OnInit{
     this.recipe.categoryName = this.selectedCategory.categoryName;
   }
   showLife(){
-    this.messageService.add({ severity: 'success', summary: 'Recipe Add', detail: 'Recipe Added Successfully!' });
+    this.messageService.add({key:'show', severity: 'success', summary: 'Recipe Add', detail: 'Recipe Added Successfully!' });
     }
 }

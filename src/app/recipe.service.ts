@@ -67,10 +67,17 @@ export class RecipeService {
   {
     return this.http.get(`${this.apiUrl}/GetRecipesByCategory/${id}`);
   }
+<<<<<<< Updated upstream
   getUserRecipes(id:any) :Observable<any> 
   {
     return this.http.get(`${this.apiUrl}/GetUserRecipes/${id}`);
   }
  
+=======
+  getUserRecipes(id:any):Observable<any>
+  {
+    return this.http.get(`${this.apiUrl}/GetUserRecipes/${id}`)
+  }
+>>>>>>> Stashed changes
 
 }

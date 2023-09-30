@@ -1,0 +1,65 @@
+<div class="container-fluid my-5">
+    <div class="row">
+        <div class="col-md-2 mt-2">
+            <input [(ngModel)]="char" type="text" class="form-control border-1 border-pink-400" placeholder="Search">
+            <div class="d-flex flex-column h-75 mt-3" id="recipes-events">
+                <div *ngFor="let recipe of recipes| search :char" [id]="recipe.id" class="recipeCard cursor-move my-2 border border-pink-100 text-center border-round">
+                    <img [src]="'https://localhost:7288/' + recipe.image" class="img-fluid mt-2 h-5rem p-1 border-round-2xl" alt="">
+                    <h5 class="mt-0">{{recipe.recipeName}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <full-calendar [options]="calendarOptions"></full-calendar>
+            <!-- <div cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="drop($event)" class="droppable-placeholder h-20rem w-h-20rem bg-black-alpha-10"
+                (drop)="onDrop($event)">
+                <p>Drop your items here!</p>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- <div id="mydraggable" cdkDrag class=" p-4 fc-event-main z-2 bg-black-alpha-40 w-25">
+    <img src="../../../assets/img/review.png" class="h-1rem" alt="">
+    <h5>hello recipe</h5>
+</div>
+<div id='draggable-el' class="fc-daygrid-day-events" cdkDrag cdkDrop data-event='{ "title": "my event", "duration": "02:00" }'>drag me</div>
+<div pDraggable  data-event='{ "title": "newww event" }'>drag me</div>
+<div cdkDrag class="position-relative"  data-event='{ "title": "newww event" }'>drag cdk me</div> -->
+
+<!-- <div id="recipes-events">
+    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+        <div class='fc-event-main'>My Event 1</div>
+      </div>
+      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+        <div class='fc-event-main'>My Event 2</div>
+      </div>
+</div> -->
+
+
+
+
+<!-- <div class="col-md-4 col-sm-8 col-xs-16" *ngFor="let recipe of getRecipesForPage(currentPage); let i = index">
+    <div class="card mb-3 recipe-card">
+      <a [routerLink]="['/recipes', recipe.id]">
+        <div class="card-img-container">
+          <img [src]="'https://localhost:7288/' + recipe.image" class="recipe-image rounded-3" alt="recipe image">
+        </div>
+        <div class="card-body text-center" style="height: 100px;">
+          <h3 class="card-title">{{ recipe.recipeName }}</h3>
+          <p class="card-text">Ingredients: {{ recipe.ingredients }}</p>
+          <p class="card-rating"></p>
+          <p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating>
+        </div>
+    </a>
+</div>
+</div> -->
+<!-- <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating> -->

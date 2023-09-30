@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { AuthService } from 'src/app/auth.service';
+import { FavouritesService } from 'src/app/favourites.service';
 import { Recipe } from 'src/app/recipe';
-import { RecipeService } from 'src/app/recipe.service';
 
 @Component({
   selector: 'app-favourites',
@@ -8,14 +10,44 @@ import { RecipeService } from 'src/app/recipe.service';
   styleUrls: ['./favourites.component.scss']
 })
 export class FavouritesComponent implements OnInit {
+  isLoading = true;
+  recipeFound = false;
   recipes: Recipe[] = [];
-  constructor(private recipeService: RecipeService){}
+  userId:string = localStorage.getItem('userId')!;
+  constructor(private _favouritesService:FavouritesService, private _authService: AuthService, private messageServie: MessageService){}
   ngOnInit(): void {
     localStorage.setItem("currentPage", "/My-favourites");
-    this.recipeService.getAllRecipes().subscribe((res) => {
-      console.log(res); 
-      this.recipes = res;
-    })
-    this.recipeService.getCategories().subscribe((res)=> console.log(res))
+    this.getUserFav();
   }
+  getUserFav(){
+    this._favouritesService.getUserFav(this.userId).subscribe(
+      {
+        next: (recipes) => {
+          this.recipes = recipes;
+          this.isLoading = false;
+          console.log(this.recipes.length);
+          if (recipes.length > 0) {
+            this.recipeFound = true;
+          }
+          this.isLoading = false;
+        },
+        error: (err) => console.log(err)
+      }
+    )
+  }
+
+  removeFav(recipeId:any){
+    this._favouritesService.removeFav(this.userId, recipeId).subscribe({
+      next: (res) => {console.log(res)},
+      error: () => {
+        this.show();
+        this.getUserFav();
+      }
+    })
+  }
+
+  show() {
+    this.messageServie.add({ severity: 'error', key: 'del', summary: 'Delete', detail: 'Recipe Deleted Successfully from your favourites!' });
+  }
+  
 }
