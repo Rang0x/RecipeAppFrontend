@@ -9,7 +9,7 @@ import { RecipeService } from 'src/app/recipe.service';
   styleUrls: ['./my-recipes.component.scss']
 })
 export class MyRecipesComponent {
-  value: string = '';
+  value: number = 0;
   recipes: any[] = [];
   rows = 6;
   currentPage = 1;

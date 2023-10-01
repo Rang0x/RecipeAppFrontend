@@ -28,7 +28,9 @@ export class AuthService {
     let decodedToken:any = jwtDecode(encodedToken);
     console.log(decodedToken);
     this.loggedUserName = decodedToken.given_name;
+    this.userId = decodedToken.nameid; 
     console.log(this.loggedUserName);
+    console.log(this.userId);
     this.userData.next(decodedToken);
     this.userId=decodedToken.nameid;
   }

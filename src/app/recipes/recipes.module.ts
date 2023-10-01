@@ -26,6 +26,11 @@ import { MessagesModule } from 'primeng/messages';
 import { CarouselModule } from 'primeng/carousel';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { ToastModule } from 'primeng/toast';
+import { PlannerComponent } from './planner/planner.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { OrderListModule } from 'primeng/orderlist';
+import { SearchPipe } from '../pipes/search.pipe';
 
 
 @NgModule({
@@ -35,7 +40,8 @@ import { ToastModule } from 'primeng/toast';
     SearchComponent, 
     BrowseComponent,
     SplitPipe,
-    RecipeFormComponent, RecipeEditComponent, MyRecipesComponent, FavouritesComponent],
+    SearchPipe,
+    RecipeFormComponent, RecipeEditComponent, MyRecipesComponent, FavouritesComponent, PlannerComponent],
   imports: [
     CardModule,
     CommonModule,
@@ -56,7 +62,11 @@ import { ToastModule } from 'primeng/toast';
     MenuModule,
     MessagesModule,
     CarouselModule,
-    ToastModule
+    ToastModule,
+    FullCalendarModule,
+    DragDropModule,
+    OrderListModule
+    
   ],
   exports: [
     RecipePageComponent,

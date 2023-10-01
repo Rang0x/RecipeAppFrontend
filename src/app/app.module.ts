@@ -37,6 +37,10 @@ import { ToastModule } from "primeng/toast";
 import { MessageService } from 'primeng/api';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FullCalendarModule } from '@fullcalendar/angular';
+// import { DragDropModule } from 'primeng/dragdrop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { OrderListModule } from 'primeng/orderlist';
 
 @NgModule({
   declarations: [
@@ -73,7 +77,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     MenuModule,
     BadgeModule,
     InputTextareaModule,
-    RouterModule
+    RouterModule,
+    FullCalendarModule,
+    DragDropModule,
+    OrderListModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, ViewChild } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -10,6 +11,7 @@ export class NavComponent {
   isLogged: boolean = false;
   loggedUserName:string = '';
   searchValue:string ='';
+  // value: any = this._authService.numberOfFav;
   items: any[] = [
     {
       label: 'Create Recipe',

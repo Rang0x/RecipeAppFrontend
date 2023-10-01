@@ -43,3 +43,30 @@ input[type=file]::file-selector-button:hover {
 ::ng-deep .p-menubar {
     border: red !important;
   }
+
+
+
+  html::-webkit-scrollbar {
+    width: 10px;
+}
+        
+html::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: rgba(188, 181, 181, 0.777);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+        
+html::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-image: linear-gradient(rgba(194, 15, 15, 0.686), rgba(154, 34, 34, 0.593) ,rgba(214, 72, 72, 0.511) );
+    background-repeat: no-repeat;
+}
+
+
+.element::-webkit-scrollbar {
+    border-radius: 8px;
+    background-image: url("https://i.ibb.co/q95CBdZ/train.png");
+    background-position:center center;
+    background-repeat: no-repeat;
+    background-size: 35px;
+  }

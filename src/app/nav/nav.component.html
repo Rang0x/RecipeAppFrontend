@@ -39,7 +39,7 @@
                     <a class="fs-6 nav-link" routerLink="/Register" style="color: white;">Sign Up</a>
                 </li>
                 <h5 *ngIf="isLogged">Welcome, {{ loggedUserName }}</h5>
-                <i *ngIf="isLogged" class="pi pi-heart mr-4 p-1 mt-3 p-text-secondary mx-5" pBadge style="font-size: 1.5rem; color: red;" value="0"></i>
+                <i *ngIf="isLogged" [routerLink]="['/My-favourites']" routerLinkActive="router-link-active"  class="pi pi-bell mr-4 p-1 mt-3 p-text-secondary mx-5 cursor-pointer" pBadge style="font-size: 1.5rem; color: red;" [value]='"1"'></i>
                 <li *ngIf="isLogged" class="register nav-item">
                     <a class="fs-6 nav-link" (click)="logOut()" routerLink="/Register" style="color: white;">Signout</a>
                 </li>
