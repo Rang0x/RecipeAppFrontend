@@ -64,6 +64,7 @@ export class RecipePageComponent {
       );
       this._ratingservice.getRecipeRate(recipeId).subscribe((res) => console.log(res));
       this.getReviews(recipeId);
+      this.getRecipeRate(recipeId);
     });
   }
   findCategoryName(categoryId: number): string {
@@ -89,11 +90,17 @@ export class RecipePageComponent {
   show() {
     this._messageService.add({ severity: 'success', summary: 'Success', detail: 'Recipe added to your Favourites Successfully!' });
   }
+  // ========= Rating Service Methods ============
   addRate(recipeid:number) {
     console.log(`${recipeid} + ${this.value}`);
     this._ratingservice.addRate(this.userId, recipeid, this.value).subscribe((res) => console.log(res)
     )
   }
+  getRecipeRate(recipeId:number) {
+    this._ratingservice.getRecipeRate(recipeId).subscribe((res) => console.log(res)
+    )
+  }
+  // ========= Review Service Methods ============
   addReview(recipeId:number) {
     this._reviewService.addReview(this.userId, recipeId, this.reviewText).subscribe((res) => console.log(res)
     )
@@ -101,7 +108,17 @@ export class RecipePageComponent {
   getReviews(recipeId:number) {
     this._reviewService.getReviews(recipeId).subscribe((res) => {
       console.log(res);
-      this.reviews = res
+      this.reviews = res;
+      function getAverageValue(objects: Array<{ value: number }>): number {
+        const sum = objects.reduce((num, object) => num + object.value, 0);
+        console.log(sum);
+        const average = sum / objects.length; 
+        console.log(average);
+        
+        return average;
+      }
+      const averageRating = getAverageValue(res);
+      console.log(averageRating);
     }
     )
   }

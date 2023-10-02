@@ -16,7 +16,7 @@ export class RatingService {
       "recipeId": recipeId
     })
   }
-  getRecipeRate(recipeId:string): Observable<any>{
+  getRecipeRate(recipeId:number): Observable<any>{
     return this._httpClient.get(this.apiUrl + `GetRatingsForRecipe/${recipeId}`)
   }
   // removeFav(userId:string, recipeId:string) : Observable<any>{
