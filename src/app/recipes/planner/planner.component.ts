@@ -20,9 +20,12 @@ export class PlannerComponent implements OnInit{
   mealId = '';
   recipeId = '';
   recipes: Recipe[] = [];
+  userEvents: any[] = [];
   calendarOptions?: CalendarOptions;
-  
   ngOnInit(): void {
+    this.getUserPlanner(this.userId!);
+    console.log(this.userEvents);
+    
     this.recipesService.getAllRecipes().subscribe((data) => {
       this.recipes = data;
       console.log(this.recipes);
@@ -35,13 +38,9 @@ export class PlannerComponent implements OnInit{
       editable: true,
       height: 600,
       droppable: true,
-      events: [
-        { title: 'event 1', date: '2023-09-28', backgroundColor: 'red' },
-        { title: 'event 2', date: '2023-09-25' }
-      ],
       drop: this.sendEvent.bind(this),
       eventDrop: this.editEvent.bind(this),
-      // eventReceive: this.handleEventDragStop.bind(this),
+      eventClick: this.deleteEvent.bind(this)
     }
     
     new Draggable(draggableEl!, {
@@ -60,22 +59,43 @@ export class PlannerComponent implements OnInit{
   sendEvent(info:any){
     this.recipeId = info.draggedEl.getAttribute('id');
     console.log(this.recipeId);
-    
+    console.log(this);
     this._plannerService.postUserPlanner(info.dateStr, info.draggedEl.getAttribute('id'), this.userId!).subscribe((res) => {
         this.mealId = res.mealPlanId;
+        console.log(res);
       }
     )
   };
   editEvent(info:any){
+    console.log(`heyy ${this.mealId}`);
     this._plannerService.editUserPlanner(this.mealId, info.event._instance.range.start, this.recipeId).subscribe((res) => console.log(res)
     )
   }
-  // onDrop(e:DragEvent){
-  //   console.log(e);
-  // }
-  // drop(e:any){
-  //   console.log(e);
-  // }
+  getUserPlanner(userId:string){
+    console.log('userPlannnerrr');
+    this._plannerService.getUserPlanner(userId).subscribe((res) => {
+      console.log(res);
+      for (const object of res) {
+        const convertedObject = {
+          title: object.mealName,
+          date: new Date(object.date),
+          backgroundColor: '#ffb6a9',
+          mealId : object.mealPlanId
+        };  
+        this.userEvents.push(convertedObject);
+      }
+      console.log(this.userEvents);
+      this.calendarOptions!.events = this.userEvents
+    }
+    )
+  }
+  deleteEvent(info:any){
+    console.log(info);
+    this._plannerService.deleteEvent(info.event._def.extendedProps.mealId).subscribe((res) => {
+      console.log(res);
+      this.getUserPlanner(this.userId!)
+    })
+  }
   constructor(private recipesService : RecipeService, private _plannerService : PlannerService){}
 }
 
@@ -101,26 +121,6 @@ export class PlannerComponent implements OnInit{
 // function(info) {
 //   console.log(info.dateStr);
 //   console.log(info.draggedEl.getAttribute('id'));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

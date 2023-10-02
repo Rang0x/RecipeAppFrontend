@@ -23,4 +23,10 @@ export class PlannerService {
       "recipeID": recipeId
     })
   };
+  getUserPlanner(userId:string): Observable<any>{
+    return this._httpClient.get(`${this.apiUrl}GetUserPlansByUserID/${userId}`)
+  }
+  deleteEvent(mealId:string): Observable<any>{
+    return this._httpClient.delete(`${this.apiUrl}${mealId}`)
+  }
 }

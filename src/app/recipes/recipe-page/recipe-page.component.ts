@@ -4,6 +4,9 @@ import { RecipeService } from '../../recipe.service';
 import { ActivatedRoute } from '@angular/router';
 import { Message, MessageService } from 'primeng/api';
 import { FavouritesService } from 'src/app/favourites.service';
+import { RatingService } from 'src/app/rating.service';
+import { AuthService } from 'src/app/auth.service';
+import { ReviewsService } from 'src/app/reviews.service';
 
 @Component({
   selector: 'app-recipe-page',
@@ -13,16 +16,17 @@ import { FavouritesService } from 'src/app/favourites.service';
 export class RecipePageComponent {
   reviews: any[] = [];
   recipe!: Recipe;
-  value!:string;
+  value!:number;
   dietaryRestriction: Message[] | any;
   messages: Message[] | any;
-  categories: any[] =[];
-  constructor(private route: ActivatedRoute,private _recipeservice: RecipeService,private _favouritesService:FavouritesService, private _messageService: MessageService){}
+  categories: any[] = [];
+  userId:string = this._authService.userId;
+  reviewText:string = '';
+  constructor(private route: ActivatedRoute, private _reviewService: ReviewsService, private _authService: AuthService, private _ratingservice: RatingService, private _recipeservice: RecipeService, private _favouritesService:FavouritesService, private _messageService: MessageService){}
   ngOnInit() {
     // this.dietaryRestriction = [
     //   { severity: 'success', summary: 'Dietary Restrictions', detail: `${this.recipe.dietaryRestrictions}` }
     // ];
-
     this.reviews= [
       {
         name: 'Abdelrahman',
@@ -58,6 +62,8 @@ export class RecipePageComponent {
           console.error('Error:', error);
         }
       );
+      this._ratingservice.getRecipeRate(recipeId).subscribe((res) => console.log(res));
+      this.getReviews(recipeId);
     });
   }
   findCategoryName(categoryId: number): string {
@@ -83,4 +89,21 @@ export class RecipePageComponent {
   show() {
     this._messageService.add({ severity: 'success', summary: 'Success', detail: 'Recipe added to your Favourites Successfully!' });
   }
+  addRate(recipeid:number) {
+    console.log(`${recipeid} + ${this.value}`);
+    this._ratingservice.addRate(this.userId, recipeid, this.value).subscribe((res) => console.log(res)
+    )
+  }
+  addReview(recipeId:number) {
+    this._reviewService.addReview(this.userId, recipeId, this.reviewText).subscribe((res) => console.log(res)
+    )
+  }
+  getReviews(recipeId:number) {
+    this._reviewService.getReviews(recipeId).subscribe((res) => {
+      console.log(res);
+      this.reviews = res
+    }
+    )
+  }
 }
+
