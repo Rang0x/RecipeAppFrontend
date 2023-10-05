@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Recipe } from 'src/app/recipe';
 import { RecipeService } from 'src/app/recipe.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 
 FormGroup
@@ -72,7 +72,7 @@ export class RecipeEditComponent implements OnInit{
     });
     }
     
-  constructor(private recipeService: RecipeService, private route :ActivatedRoute, private messageService: MessageService){}
+  constructor(private recipeService: RecipeService, private route :ActivatedRoute, private messageService: MessageService, private _router: Router){}
   editRecipe() {
     // Update the recipe object with new values inside the subscribe block
     this.recipe.recipeName = this.editForm.get('recipeName')?.value;
@@ -82,7 +82,7 @@ export class RecipeEditComponent implements OnInit{
     console.log(this.recipe);
     this.recipeService.editRecipe(this.recipe, this.recipe.id).subscribe((data) => {
       this.showLife();
-      
+      this._router.navigate(['My-recipes'])
       if (this.addedImage && this.file) {
         this.recipeService.uploadImage(this.file, this.recipe.id).subscribe((data) => {
           // Handle image upload response if needed

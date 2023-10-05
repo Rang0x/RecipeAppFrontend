@@ -40,20 +40,21 @@ export class RecipeFormComponent implements OnInit{
         if (this.file && this.recipe.id !== undefined) 
         {
           this.recipeService.uploadImage(this.file, this.recipe.id).subscribe((data) => {
+            if(this.recipe.id !== undefined)
+            {
+              this.router.navigate(['My-recipes']);
+            }
           });
         }
       }
-      if(this.recipe.id !== undefined)
-      {
-        this.router.navigate(['My-recipes']);
-      }
+
     });
     
     console.log(this.recipe);
   }
   constructor(private recipeService: RecipeService,private router: Router, private messageService: MessageService){}
   ngOnInit(): void {
-    localStorage.setItem("currentPage", "Add-recipe");
+    // localStorage.setItem("currentPage", "Add-recipe");
     this.recipeService.getCategories().subscribe(
       (categories) =>{
         this.categories=categories;

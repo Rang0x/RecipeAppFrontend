@@ -18,3 +18,14 @@ export interface Recipe {
         favoritedByUsers?:    null;
 
 }
+
+export interface RecipeRating {
+        ratingId?:number
+        recipe?:any
+        recipeId?:number
+        value?:number
+        user?:any
+        userId?:number
+
+
+}

@@ -11,6 +11,7 @@ import { RecipeService } from 'src/app/recipe.service';
 export class MyRecipesComponent {
   value: number = 0;
   recipes: any[] = [];
+  recipeId : any;
   rows = 6;
   currentPage = 1;
   isLoading = true;
@@ -59,8 +60,8 @@ export class MyRecipesComponent {
     this.currentPage = event.page + 1;
   }
 
-  deleteRecipe(recipeId: number) {
-    this.recipeService.deleteRecipe(recipeId).subscribe((data) => {
+  deleteRecipe() {
+    this.recipeService.deleteRecipe(this.recipeId ).subscribe((data) => {
       console.log(data);
       this.confirmDelete();
       this.loadRecipes();
@@ -79,7 +80,8 @@ export class MyRecipesComponent {
   onReject(){
     alert("REJEECT")
   }
-  showConfirm(){
+  showConfirm(id:any){
+    this.recipeId = id;
       this.messageService.add({ severity: 'error', summary: 'Recipe Delete', detail: 'Are you sure ?', sticky: true, key: 'confirm' });
   }
   confirmDelete(){

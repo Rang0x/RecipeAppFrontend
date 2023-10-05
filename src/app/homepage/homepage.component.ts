@@ -12,7 +12,7 @@ export class HomepageComponent implements OnInit{
   recipes: Recipe[] = [];
   constructor(private recipeService: RecipeService){}
   ngOnInit(): void {
-    localStorage.setItem("currentPage", "");
+    // localStorage.setItem("currentPage", "");
     this.recipeService.getAllRecipes().subscribe((res) => {
       console.log(res); 
       this.recipes = res;

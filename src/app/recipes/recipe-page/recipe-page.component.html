@@ -5,6 +5,7 @@
             <div class="col-6 pt-8 pb-3 md:col-6 d-flex flex-column align-items-center overflow-hidden">
                 <img [src]="'https://localhost:7288/' + recipe.image" alt="{{recipe.recipeName}}" class="card-img rounded mt-0 mb-2 max-h-25rem max-w-30rem m-auto d-block" >
                 <p-messages key="diet" [(value)]="messages" [enableService]="true" [closable]="false"></p-messages>
+                <!-- <h3>{{value}}</h3> -->
                 <!-- <div class="scrolldown-wrapper">
                     <div class="scrolldown">
                         <svg height="30" width="10">
@@ -17,7 +18,7 @@
             <div class="col-6 md:col-6 py-8 px-4  md:text-left d-flex justify-content-center align-items-center ">
                 <section class="card px-6">
                     <span class="block text-4xl font-bold ">{{recipe.recipeName}}</span>
-                    <p-rating class="mt-2" [(ngModel)]="value" [cancel]="false"></p-rating>
+                    <p-rating class="mt-2" [(ngModel)]="value" (click)="addRate(recipe.id!)"  [cancel]="false"></p-rating>
                     <p class="mt-1">Category : <span class="fw-bold text-primary-800">{{ findCategoryName(recipe.categoryId!)}}</span></p>
                     <!-- <p class="card-text"></p><p-rating [(ngModel)]="recipe.rating" [readonly]="true" [cancel]="false"></p-rating> -->
                     <div class="text-3xl text-primary font-bold mt-2">Ingredients</div>
@@ -45,7 +46,7 @@
                                 <div>
                                     <h4 class="mb-1">{{review.name}}</h4>
                                     <h6>{{review.text}}</h6>
-                                    <p-rating class="mt-2" [(ngModel)]="review.rating" [cancel]="false"></p-rating>
+                                    <!-- <p-rating class="mt-2" [(ngModel)]="review.rating" [cancel]="false"></p-rating> -->
                                 </div>
                                 
                             </div>
@@ -53,8 +54,8 @@
                     </p-carousel>
                     <span class="d-flex flex-column align-items-center">
                         <h5 class="fw-bold mb-0 mt-6">Add Review</h5>
-                        <textarea class="border border-1 border-danger p-5 rounded-2 mt-4 mb-3" style="width: 85%; height: 150px;" pInputTextarea></textarea>
-                        <button pButton  label="Add review" type="button" class="w-11rem m-auto p-button-raised"></button>
+                        <textarea  [(ngModel)]="reviewText" class="border border-1 border-danger p-5 rounded-2 mt-4 mb-3" style="width: 85%; height: 150px;" pInputTextarea></textarea>
+                        <button pButton (click)="addReview(recipe.id!)" label="Add review" type="button" class="w-11rem m-auto p-button-raised"></button>
                     </span>
             </div>
         </div>

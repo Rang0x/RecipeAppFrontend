@@ -30,7 +30,7 @@ export class BrowseComponent implements OnInit {
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    localStorage.setItem("currentPage", "Browse");
+    // localStorage.setItem("currentPage", "Browse");
     this.loadRecipes();
     this.recipeService.getAllIngredients().subscribe(
       (ingredients) =>{

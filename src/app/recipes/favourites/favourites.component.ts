@@ -13,11 +13,12 @@ export class FavouritesComponent implements OnInit {
   isLoading = true;
   recipeFound = false;
   recipes: Recipe[] = [];
-  userId:string = localStorage.getItem('userId')!;
+  userId:string = this._authService.userId;
   constructor(private _favouritesService:FavouritesService, private _authService: AuthService, private messageServie: MessageService){}
   ngOnInit(): void {
-    localStorage.setItem("currentPage", "/My-favourites");
+    // localStorage.setItem("currentPage", "/My-favourites");
     this.getUserFav();
+    console.log(this.userId);
   }
   getUserFav(){
     this._favouritesService.getUserFav(this.userId).subscribe(
