@@ -16,7 +16,7 @@ export class FavouritesComponent implements OnInit {
   userId:string = this._authService.userId;
   constructor(private _favouritesService:FavouritesService, private _authService: AuthService, private messageServie: MessageService){}
   ngOnInit(): void {
-    localStorage.setItem("currentPage", "/My-favourites");
+    // localStorage.setItem("currentPage", "/My-favourites");
     this.getUserFav();
     console.log(this.userId);
   }

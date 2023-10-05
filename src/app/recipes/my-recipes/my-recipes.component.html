@@ -23,7 +23,7 @@
               </a>
               <div class="btn-container align-self-end">
                 <button class="btn btn-outline-primary mx-1" (click)="editRecipe(recipe.id)">Edit</button>
-                <button class="btn btn-outline-danger" (click)="showConfirm()">Delete</button>
+                <button class="btn btn-outline-danger" (click)="showConfirm(recipe.id)">Delete</button>
                 
 <div>
   <p-toast position="bottom-center" key="confirm" (onClose)="onReject()" [baseZIndex]="5000">
@@ -36,7 +36,7 @@
             </div>
             <div class="grid p-fluid">
                 <div class="col-6">
-                    <button type="button" pButton (click)="deleteRecipe(recipe.id)" label="Yes" class="p-button-success"></button>
+                    <button type="button" pButton (click)="deleteRecipe()" label="Yes" class="p-button-success"></button>
                 </div>
                 <div class="col-6">
                     <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>

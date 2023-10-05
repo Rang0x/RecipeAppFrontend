@@ -25,7 +25,6 @@ export class PlannerComponent implements OnInit{
   ngOnInit(): void {
     this.getUserPlanner(this.userId!);
     console.log(this.userEvents);
-    
     this.recipesService.getAllRecipes().subscribe((data) => {
       this.recipes = data;
       console.log(this.recipes);
@@ -63,6 +62,9 @@ export class PlannerComponent implements OnInit{
     this._plannerService.postUserPlanner(info.dateStr, info.draggedEl.getAttribute('id'), this.userId!).subscribe((res) => {
         this.mealId = res.mealPlanId;
         console.log(res);
+        info.draggedEl.setAttribute("mealId", res.mealPlanId)
+        console.log(info.draggedEl);
+        // response has the mealID 
       }
     )
   };
@@ -93,11 +95,23 @@ export class PlannerComponent implements OnInit{
     console.log(info);
     this._plannerService.deleteEvent(info.event._def.extendedProps.mealId).subscribe((res) => {
       console.log(res);
+      this.userEvents =[];
+      this.getUserPlanner(this.userId!)
+    })
+    this._plannerService.deleteEvent(info.event._def.extendedProps.mealId).subscribe((res) => {
+      console.log(res);
+      this.userEvents =[];
       this.getUserPlanner(this.userId!)
     })
   }
   constructor(private recipesService : RecipeService, private _plannerService : PlannerService){}
 }
+
+
+
+
+
+
 
 
 // function handleDateClick(arg: any, DateClickArg: any) {
@@ -121,9 +135,6 @@ export class PlannerComponent implements OnInit{
 // function(info) {
 //   console.log(info.dateStr);
 //   console.log(info.draggedEl.getAttribute('id'));
-
-
-
 
 
   // availableProducts: any[] | undefined;

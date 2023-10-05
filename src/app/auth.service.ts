@@ -20,7 +20,7 @@ export class AuthService {
     }
     else{
       this.decodeUserToken();
-      _router.navigate([localStorage.getItem("currentPage")])
+      // _router.navigate([localStorage.getItem("currentPage")])
     }
   }
   decodeUserToken(){
