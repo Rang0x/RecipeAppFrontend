@@ -39,6 +39,11 @@ export class SidebarComponent implements OnInit{
                   label: 'Meal Planner',
                   icon: 'pi pi-fw pi-calendar',
                   routerLink: 'Meal-planner'
+              },
+              {
+                  label: 'Shopping List',
+                  icon: 'pi pi-fw pi-shopping-cart',
+                  routerLink: 'Shopping-List'
               }
           ]
       }]
