@@ -26,13 +26,9 @@ export class AuthService {
   decodeUserToken(){
     let encodedToken:string = JSON.stringify( localStorage.getItem('userToken'));
     let decodedToken:any = jwtDecode(encodedToken);
-    console.log(decodedToken);
     this.loggedUserName = decodedToken.given_name;
     this.userId = decodedToken.nameid; 
-    console.log(this.loggedUserName);
-    console.log(this.userId);
     this.userData.next(decodedToken);
-    this.userId=decodedToken.nameid;
   }
   register(registerData:object):Observable<any>{
     return this._httpClient.post(this.apiUrl + 'User/register', registerData)

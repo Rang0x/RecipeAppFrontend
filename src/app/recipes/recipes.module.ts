@@ -31,6 +31,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OrderListModule } from 'primeng/orderlist';
 import { SearchPipe } from '../pipes/search.pipe';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { PickListModule } from 'primeng/picklist';
 
 
 @NgModule({
@@ -41,7 +43,7 @@ import { SearchPipe } from '../pipes/search.pipe';
     BrowseComponent,
     SplitPipe,
     SearchPipe,
-    RecipeFormComponent, RecipeEditComponent, MyRecipesComponent, FavouritesComponent, PlannerComponent],
+    RecipeFormComponent, RecipeEditComponent, MyRecipesComponent, FavouritesComponent, PlannerComponent, ShoppingListComponent],
   imports: [
     CardModule,
     CommonModule,
@@ -65,8 +67,8 @@ import { SearchPipe } from '../pipes/search.pipe';
     ToastModule,
     FullCalendarModule,
     DragDropModule,
-    OrderListModule
-    
+    OrderListModule,
+    PickListModule
   ],
   exports: [
     RecipePageComponent,

@@ -1,0 +1,18 @@
+
+<div class="card">
+    <p-pickList class="w-75 m-auto" [source]="ToBuy" [target]="Done" sourceHeader="Shopping List" targetHeader="Purchased" (onMoveToTarget)="purchasedItem()" [dragdrop]="true" [responsive]="true" [sourceStyle]="{ height: '30rem' }"
+        [targetStyle]="{ height: '30rem'}" filterBy="name" sourceFilterPlaceholder="Search by name" targetFilterPlaceholder="Search by name" breakpoint="1400px">
+        <ng-template let-recipe pTemplate="item">
+            <div class="flex flex-wrap p-2 align-items-center gap-3">
+                <div class="flex-1 flex gap-2">
+                    <span class="font-bold">{{ recipe.name }}</span>
+                    <img src="" alt="">
+                    <div class="flex align-products-center gap-2">
+                        <i class="pi pi-tag text-sm"></i>
+                        <!-- <span>{{ product.category }}</span> -->
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-pickList>
+</div>

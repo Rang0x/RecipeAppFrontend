@@ -14,6 +14,7 @@ import { MyRecipesComponent } from './recipes/my-recipes/my-recipes.component';
 import { FavouritesComponent } from './recipes/favourites/favourites.component';
 import { PlannerComponent } from './recipes/planner/planner.component';
 import { AllRecipesComponent } from './recipes/all-recipes/all-recipes.component';
+import { ShoppingListComponent } from './recipes/shopping-list/shopping-list.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'Edit-recipe/:id', canActivate: [authGuard], component: RecipeEditComponent},
   {path:'Meal-planner', canActivate: [authGuard], component: PlannerComponent},
   {path: 'My-recipes',canActivate: [authGuard], component: MyRecipesComponent},
+  {path: 'Shopping-List',canActivate: [authGuard], component: ShoppingListComponent}
 ];
 
 @NgModule({
